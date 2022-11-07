@@ -5,7 +5,7 @@ interface ICardBackground {
 const CardBackground: React.FC<ICardBackground> = ({ children }) => {
   return (
     <>
-      <div className="bg-white p-8 rounded-lg">{children}</div>
+      <div className="bg-white p-3 sm:p-8 rounded-lg">{children}</div>
     </>
   );
 };

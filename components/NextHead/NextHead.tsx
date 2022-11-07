@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import Head from "next/head";
 
 interface INextHeader {
@@ -12,6 +13,12 @@ const SiteHeader: React.FC<INextHeader> = ({ title, description }) => {
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Mali&display=swap"
+        rel="stylesheet"
+      ></link>
     </Head>
   );
 };
