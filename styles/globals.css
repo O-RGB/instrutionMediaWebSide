@@ -16,6 +16,12 @@ a {
   text-decoration: none;
 }
 
+@media print {
+  .imgPrint {
+     display: none;  /* hide whole page */
+  }
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Mali';

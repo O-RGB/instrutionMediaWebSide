@@ -31,8 +31,7 @@ export default function Home() {
     "eveniet",
   ];
 
-  const color = 'bg-gray-400';
-
+  const color = "bg-gray-400";
 
   return (
     <>
@@ -51,7 +50,7 @@ export default function Home() {
         <Display>
           <div className="grid grid-cols-12 gap-3 ">
             <div className="hidden lg:col-span-2 lg:block">
-              <div className=" sticky top-14 overflow-scroll">
+              <div className=" sticky top-16 overflow-scroll">
                 <CardBackground
                   padding="p-0 py-0"
                   rounded="rounded-b-md"
@@ -65,22 +64,57 @@ export default function Home() {
             </div>
             <div className="col-span-12 lg:col-span-10">
               <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
-                <DetailHeader colorTheme={color} ></DetailHeader>
-                <ContentHeader colorTheme={color} contect={elementTest}></ContentHeader>
-                <div className="font-bold text-gray-700">
-                  <ul className="list-disc pl-2 ">
-                    <li>ตัวอย่าง</li>
-                  </ul>
+                <DetailHeader colorTheme={color}></DetailHeader>
+                <ContentHeader
+                  colorTheme={color}
+                  contect={elementTest}
+                ></ContentHeader>
+                <div className="font-bold bg-gray-100 p-3  -mx-8 text-gray-500  shadow-sm">
+                  ตัวอย่าง
                 </div>
-                <Exmple colorTheme={color} number="1" content="จำนวนเฉพาะ"  contentDetail="ตั้งแต่หน้า 1 - 50" imagePathList={arr}></Exmple>
-                <Exmple colorTheme={color} number="2" content="การบวก"  contentDetail="ตั้งแต่หน้า 50 - 100" imagePathList={arr}></Exmple>
-                <Exmple colorTheme={color} number="3" content="การการหาร"  contentDetail="ตั้งแต่หน้า 100 - 110" imagePathList={arr}></Exmple>
-                <Exmple colorTheme={color} number="4" content="กำ"  contentDetail="ตั้งแต่หน้า 110 - 150" imagePathList={arr}></Exmple>
+                <Exmple
+                  colorTheme={color}
+                  number="1"
+                  content="จำนวนเฉพาะ"
+                  contentDetail="ตั้งแต่หน้า 1 - 50"
+                  imagePathList={arr}
+                ></Exmple>
+                <Exmple
+                  colorTheme={color}
+                  number="2"
+                  content="การบวก"
+                  contentDetail="ตั้งแต่หน้า 50 - 100"
+                  imagePathList={arr}
+                ></Exmple>
+                <Exmple
+                  colorTheme={color}
+                  number="3"
+                  content="การการหาร"
+                  contentDetail="ตั้งแต่หน้า 100 - 110"
+                  imagePathList={arr}
+                ></Exmple>
+                <Exmple
+                  colorTheme={color}
+                  number="4"
+                  content="กำ"
+                  contentDetail="ตั้งแต่หน้า 110 - 150"
+                  imagePathList={arr}
+                ></Exmple>
+                <div className="font-bold bg-gray-200 p-3  -mx-8 text-gray-500  shadow-sm">
+                  ใบงานที่เกี่ยวข้อง
+                </div>
+                <div className="h-auto">
+
+                  <div className="">
+
+                  </div>
+
+                </div>
               </CardBackground>
             </div>
           </div>
         </Display>
-        <div className="w-full h-20 bg-black"></div>
+        <div className="w-full h-20 bg-gray-600"></div>
       </div>
     </>
   );

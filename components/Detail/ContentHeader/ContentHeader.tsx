@@ -34,7 +34,7 @@ const ContentHeader: React.FC<IContentHeader> = ({ children, contect,colorTheme 
           <li>เนื้อหา</li>
         </ul>
       </div>
-      <div className="flex flex-wrap px-2 justify-start">
+      <div className="flex flex-wrap px-2 p-2 justify-start">
         {contect.map((e, i) => {
           return (
             <React.Fragment key={`element-index-key${i}`}>

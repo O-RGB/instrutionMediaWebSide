@@ -12,8 +12,8 @@ const DetailHeader: React.FC<IDetailHeader> = ({ children,colorTheme }) => {
   const iconName = (title: string, detail: string, icon: any) => {
     return (
       <>
-        <div className="flex gap-2 px-2">
-          <div className={`flex  ${colorTheme} w-12 h-12 sm:w-14 sm:h-14 rounded-full`}>
+        <div className="flex gap-2 px-2 p-2">
+          <div className={`flex  ${colorTheme} w-12 h-12 sm:w-14 sm:h-14 rounded-md`}>
             <div className="m-auto">{icon}</div>
           </div>
           <div className="flex">
@@ -35,7 +35,7 @@ const DetailHeader: React.FC<IDetailHeader> = ({ children,colorTheme }) => {
           <li>ราคาสินค้า</li>
         </ul>
       </div>
-      <div className="grid sm:grid-cols-12 py-3 gap-3 sm:gap-1">
+      <div className="grid sm:grid-cols-12 py-3  ">
         <div className="col-span-6 ">
           {iconName(
             "ปริ้นไม่เข้าเล่ม",
@@ -44,7 +44,7 @@ const DetailHeader: React.FC<IDetailHeader> = ({ children,colorTheme }) => {
           )}
         </div>
         <div className="col-span-6 ">
-          {iconName("ไฟล์", "99 บาท", <FaFilePdf color="#FFFFFF" size={18}/>)}
+          {iconName("ไฟล์ PDF", "99 บาท", <FaFilePdf color="#FFFFFF" size={18}/>)}
         </div>
       </div>
     </>

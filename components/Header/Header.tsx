@@ -8,7 +8,7 @@ interface IHeader {
 const Header: React.FC<IHeader> = ({}) => {
   return (
     <>
-      <div className="h-14 w-full bg-white shadow-md sticky top-0 z-50 ">
+      <div className="h-14 w-full bg-white shadow-sm sticky top-0 z-50 ">
         <div className="flex m-auto w-ful h-full p-2 max-w-7xl px-3 sm:px-14 justify-between">
           <div className="flex ">
             <img
