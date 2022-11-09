@@ -27,12 +27,12 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
                   <img
                     src={imagePath}
                     alt=""
-                    className="z-20 w-fit h-32 sm:h-40 md:h-40 lg:h-56 object-contain rounded-md shadow-md"
+                    className="z-20 w-auto h-32 sm:h-40 md:h-40 lg:h-56 object-contain rounded-md shadow-md"
                   />
                   <img
                     src={imagePathBlack}
                     alt=""
-                    className="z-20 w-fit h-32 sm:h-40 md:h-40 lg:h-56 object-contain rounded-md shadow-md"
+                    className="z-20 w-auto  h-32 sm:h-40 md:h-40 lg:h-56 object-contain rounded-md shadow-md"
                   />
                 </div>
               </div>
@@ -47,15 +47,16 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
             </div>
           </div>
         </div>
+        
         <div className="absolute -bottom-20 -right-10 z-0">
-          <img src="eff.svg" alt="" className="w-fit h-60 opacity-10 z-0" />
+          <img src="eff.svg" alt="" className="w-auto h-60 opacity-10 z-0" />
         </div>
 
-        <div className="absolute -top-20 -left-40 z-0">
+        <div className="absolute w-full -top-20 -left-40 z-0">
           <img
             src="eff.svg"
             alt=""
-            className="w-fit h-60  opacity-10 rotate-180 z-0"
+            className="w-auto h-60  opacity-10 rotate-180 z-0"
           />
         </div>
       </div>

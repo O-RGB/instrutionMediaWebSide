@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import CardBackground from "../components/CardBackground";
 import Display from "../components/Display";
-import Exmple from "../components/Exmple";
+import Exmple from "../components/Detail/Exmple";
 import Header from "../components/Header";
 import HeaderPreview from "../components/HeaderPreview/HeaderPreview";
-import { FaPrint, FaFile, FaFilePdf } from "react-icons/fa";
+import React from "react";
+import DetailHeader from "../components/Detail/DetailHeader";
+import ContentHeader from "../components/Detail/ContentHeader";
 
 export default function Home() {
   const arr = [
@@ -18,26 +20,19 @@ export default function Home() {
     "1.png",
   ];
 
-  const iconName = (title:string, detail:string,icon:any) => {
-    return (
-      <>
-        <div className="flex gap-4">
-          <div className="flex bg-gray-500 w-14 h-14 rounded-full">
-            <div className="m-auto">
-              {icon}
-              
-            </div>
-          </div>
-          <div className="flex">
-            <div className="m-auto">
-              <div className="font-bold">{title}</div>
-              <div className="text-sm">{detail}</div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  };
+  const elementTest = [
+    "ipsum",
+    "consectetur",
+    "adipisicing",
+    "commodi",
+    "cumque",
+    "veritatis",
+    "architecto",
+    "eveniet",
+  ];
+
+  const color = 'bg-gray-400';
+
 
   return (
     <>
@@ -57,55 +52,30 @@ export default function Home() {
           <div className="grid grid-cols-12 gap-3 ">
             <div className="hidden lg:col-span-2 lg:block">
               <div className=" sticky top-14 overflow-scroll">
-                <CardBackground padding="p-0 py-0" rounded="rounded-b-md">
-                  <div className="w-full h-screen ">
-                    <div className="font-bold bg-gray-200 p-3 text-gray-700  rounded-t-md shadow-sm">
-                      ใบงานแนะนำ
-                    </div>
+                <CardBackground
+                  padding="p-0 py-0"
+                  rounded="rounded-b-md"
+                  titleHerder="ใบงานแนะนำ"
+                >
+                  <div className="w-full h-screen   ">
                     {/* <img src="imageExTest.png" alt="" className="w-full h-auto"/> */}
                   </div>
                 </CardBackground>
               </div>
             </div>
             <div className="col-span-12 lg:col-span-10">
-              <div className="font-bold bg-gray-200 p-3  text-gray-700 rounded-t-md shadow-sm">
-                รายละเอียด
-              </div>
-              <CardBackground rounded="rounded-b-md">
-                <div className="pb-5">
-                  <div className="pb-4  ">
-                    <div className="grid grid-cols-12 py-5">
-                      <div className="col-span-6">{iconName("ปริ้นไม่เข้าเล่ม",'270 บาทรวมส่ง',<FaPrint color="#FFFFFF" />)}</div>
-                      <div className="col-span-6">{iconName("ไฟล์","99 บาท",<FaFilePdf color="#FFFFFF" />)}</div>
-                    </div>
-                    <div className="py-3">
-
-                    </div>
-
-                    <div className="text-lg font-bold text-gray-700">
-                      จำนวนเฉพาะ
-                    </div>
-                    <div className="text-sm text-gray-700">
-                      ตั้งแต่หน้าที่ 10 - 50
-                    </div>
-                  </div>
-                  <div></div>
-                  <hr />
+              <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
+                <DetailHeader colorTheme={color} ></DetailHeader>
+                <ContentHeader colorTheme={color} contect={elementTest}></ContentHeader>
+                <div className="font-bold text-gray-700">
+                  <ul className="list-disc pl-2 ">
+                    <li>ตัวอย่าง</li>
+                  </ul>
                 </div>
-                <Exmple imagePathList={arr}></Exmple>
-                <div className="py-5">
-                  <div className="py-4  ">
-                    <div className="text-lg font-bold text-gray-700">
-                      จำนวนเฉพาะ
-                    </div>
-                    <div className="text-sm text-gray-700">
-                      ตั้งแต่หน้าที่ 10 - 50
-                    </div>
-                  </div>
-                  <div></div>
-                  <hr />
-                </div>
-                <Exmple imagePathList={arr}></Exmple>
+                <Exmple colorTheme={color} number="1" content="จำนวนเฉพาะ"  contentDetail="ตั้งแต่หน้า 1 - 50" imagePathList={arr}></Exmple>
+                <Exmple colorTheme={color} number="2" content="การบวก"  contentDetail="ตั้งแต่หน้า 50 - 100" imagePathList={arr}></Exmple>
+                <Exmple colorTheme={color} number="3" content="การการหาร"  contentDetail="ตั้งแต่หน้า 100 - 110" imagePathList={arr}></Exmple>
+                <Exmple colorTheme={color} number="4" content="กำ"  contentDetail="ตั้งแต่หน้า 110 - 150" imagePathList={arr}></Exmple>
               </CardBackground>
             </div>
           </div>
