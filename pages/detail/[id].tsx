@@ -61,75 +61,54 @@ const Detail: NextPage = ({ props, preview }: any) => {
               }
             ></HeaderPreview>
             <Display>
-              <div className="grid grid-cols-12 gap-3 ">
-                <div className="hidden lg:col-span-2 lg:block">
-                  <div className=" sticky top-16 overflow-scroll">
-                    <CardBackground
-                      padding="p-0 py-0"
-                      rounded="rounded-b-md"
-                      titleHerder="ใบงานแนะนำ"
-                    >
-                      <div className="w-full h-screen   ">
-                        {/* <img src="imageExTest.png" alt="" className="w-full h-auto"/> */}
-                      </div>
-                    </CardBackground>
+              <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
+                <h1>{previewMode}</h1>
+                <CategoryHeader
+                  tag={
+                    DetailMockState != undefined
+                      ? (DetailMockState as IDetailMock).category
+                      : []
+                  }
+                ></CategoryHeader>
+                <DetailHeader colorTheme={color}></DetailHeader>
+                <ContentHeader
+                  colorTheme={color}
+                  contect={
+                    DetailMockState != undefined
+                      ? (DetailMockState as IDetailMock).content
+                      : []
+                  }
+                ></ContentHeader>
+                <div className="pb-2">
+                  <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
+                    ตัวอย่าง
                   </div>
                 </div>
-                <div className="col-span-12 lg:col-span-10">
-                  <CardBackground
-                    rounded="rounded-b-md"
-                    titleHerder="รายละเอียด"
-                  >
-                    <h1>{previewMode}</h1>
-                    <CategoryHeader
-                      tag={
-                        DetailMockState != undefined
-                          ? (DetailMockState as IDetailMock).category
-                          : []
-                      }
-                    ></CategoryHeader>
-                    <DetailHeader colorTheme={color}></DetailHeader>
-                    <ContentHeader
-                      colorTheme={color}
-                      contect={
-                        DetailMockState != undefined
-                          ? (DetailMockState as IDetailMock).content
-                          : []
-                      }
-                    ></ContentHeader>
-                    <div className="pb-2">
-                      <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
-                        ตัวอย่าง
-                      </div>
-                    </div>
 
-                    <>
-                      {(DetailMockState as IDetailMock).examGroup.map(
-                        (e, i) => (
-                          <React.Fragment key={`exam_g_${i}`}>
-                            <Exmple
-                              colorTheme={color}
-                              number={`${i + 1}`}
-                              content={e.name}
-                              contentDetail="ตั้งแต่หน้า 1 - 50"
-                              imagePathList={e.imagePath}
-                            ></Exmple>
-                          </React.Fragment>
-                        )
-                      )}
-                    </>
+                <>
+                  {(DetailMockState as IDetailMock).examGroup.map((e, i) => (
+                    <React.Fragment key={`exam_g_${i}`}>
+                      <Exmple
+                        colorTheme={color}
+                        number={`${i + 1}`}
+                        content={e.name}
+                        contentDetail="ตั้งแต่หน้า 1 - 50"
+                        imagePathList={e.imagePath}
+                      ></Exmple>
+                    </React.Fragment>
+                  ))}
+                </>
 
-                    <div className="font-bold bg-gray-200 p-3 -mx-6 rounded-xl text-gray-500  shadow-sm">
-                      ใบงานที่เกี่ยวข้อง
-                    </div>
-                    <div className="h-auto">
-                      <div className=""></div>
-                    </div>
-                  </CardBackground>
+                <div className="h-auto">
+                  <div className=""></div>
                 </div>
-              </div>
+              </CardBackground>
             </Display>
-            <div className="w-full h-20 bg-gray-600"></div>
+            <div className="flex flex-wrap justify-start sm:justify-center  gap-2 sm:gap-4 text-center  w-full h-auto bg-gray-600 p-4 text-white text-xs">
+              <div>เว็บไซต์ สื่อการสอน Worksheets</div>
+              <div>Email :learningworksheets@gmail.com</div>
+              <div>Facebook Page : สื่อการสอน Worksheets</div>
+            </div>
           </div>
         </>
       )}
@@ -153,3 +132,66 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
   return { props: { props: data, preview: preview } };
 };
+
+<div className="grid grid-cols-12 gap-3 ">
+  <div className="hidden lg:col-span-2 lg:block">
+    <div className=" sticky top-16 overflow-scroll">
+      <CardBackground
+        padding="p-0 py-0"
+        rounded="rounded-b-md"
+        titleHerder="ใบงานแนะนำ"
+      >
+        <div className="w-full h-screen   ">
+          {/* <img src="imageExTest.png" alt="" className="w-full h-auto"/> */}
+        </div>
+      </CardBackground>
+    </div>
+  </div>
+  <div className="col-span-12 lg:col-span-10">
+    <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
+      {/* <h1>{previewMode}</h1> */}
+      {/* <CategoryHeader
+        tag={
+          DetailMockState != undefined
+            ? (DetailMockState as IDetailMock).category
+            : []
+        }
+      ></CategoryHeader> */}
+      {/* <DetailHeader colorTheme={color}></DetailHeader> */}
+      {/* <ContentHeader
+        colorTheme={color}
+        contect={
+          DetailMockState != undefined
+            ? (DetailMockState as IDetailMock).content
+            : []
+        }
+      ></ContentHeader> */}
+      <div className="pb-2">
+        <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
+          ตัวอย่าง
+        </div>
+      </div>
+
+      {/* <>
+        {(DetailMockState as IDetailMock).examGroup.map((e, i) => (
+          <React.Fragment key={`exam_g_${i}`}>
+            <Exmple
+              colorTheme={color}
+              number={`${i + 1}`}
+              content={e.name}
+              contentDetail="ตั้งแต่หน้า 1 - 50"
+              imagePathList={e.imagePath}
+            ></Exmple>
+          </React.Fragment>
+        ))}
+      </> */}
+
+      <div className="font-bold bg-gray-200 p-3 -mx-6 rounded-xl text-gray-500  shadow-sm">
+        ใบงานที่เกี่ยวข้อง
+      </div>
+      <div className="h-auto">
+        <div className=""></div>
+      </div>
+    </CardBackground>
+  </div>
+</div>;
