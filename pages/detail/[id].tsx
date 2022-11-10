@@ -62,7 +62,6 @@ const Detail: NextPage = ({ props, preview }: any) => {
             ></HeaderPreview>
             <Display>
               <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
-                <h1>{previewMode}</h1>
                 <CategoryHeader
                   tag={
                     DetailMockState != undefined

@@ -21,7 +21,7 @@ const CategoryHeader: React.FC<ICategoryHeader> = ({
           <li>หมวดหมู่</li>
         </ul>
       </div>
-      <div className="p-2 py-3 text-xs text-white font-bold flex flex-wrap gap-2">
+      <div className="p-2 py-3 text-xs text-white font-bold flex flex-wrap gap-4">
         {tag.map((e,i) => {
           return (
             <React.Fragment key={`category-i-lop-${i}`}>
