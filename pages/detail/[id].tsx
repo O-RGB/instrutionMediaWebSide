@@ -35,7 +35,7 @@ const Detail: NextPage = ({ props, preview }: any) => {
             }
             url={`https://instrutionmediadetail.vercel.app/detail/${
               (DetailMockState as IDetailMock).url
-            }`}
+            }${previewMode == "windows" ? "?mode=windows" : ""}`}
           ></NextHead>
 
           <Header></Header>
