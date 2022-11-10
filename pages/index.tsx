@@ -7,8 +7,14 @@ import HeaderPreview from "../components/HeaderPreview/HeaderPreview";
 import React from "react";
 import DetailHeader from "../components/Detail/DetailHeader";
 import ContentHeader from "../components/Detail/ContentHeader";
+import CategoryHeader from "../components/Detail/CategoryHeader";
+import { getByID, getDocDocumentData } from "../api/fetch/fetchFirebase";
+import { doc, getDoc, getDocs } from "firebase/firestore";
+import { DetailModel } from "../model/Detail";
 
-export default function Home() {
+export default function Home({ props }: any) {
+  let Detail: DetailCollection = props;
+  console.log(props);
   const arr = [
     "1.png",
     "1.png",
@@ -41,10 +47,8 @@ export default function Home() {
         <HeaderPreview
           imagePath={"imageExTest.png"}
           imagePathBlack={"imageExTest.png"}
-          title={"คณิตศาสตร์ ป.1"}
-          titleDetail={
-            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit commodi nisi cumque veritatis eligendi eveniet architecto illo laudantium. Culpa ullam, et delenit"
-          }
+          title={Detail.title}
+          titleDetail={Detail.titleDetail}
           color={"bg-purple-600"}
         ></HeaderPreview>
         <Display>
@@ -64,13 +68,16 @@ export default function Home() {
             </div>
             <div className="col-span-12 lg:col-span-10">
               <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
+                <CategoryHeader tag={Detail.category}></CategoryHeader>
                 <DetailHeader colorTheme={color}></DetailHeader>
                 <ContentHeader
                   colorTheme={color}
-                  contect={elementTest}
+                  contect={Detail.content}
                 ></ContentHeader>
-                <div className="font-bold bg-gray-100 p-3  -mx-8 text-gray-500  shadow-sm">
-                  ตัวอย่าง
+                <div className="pb-2">
+                  <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
+                    ตัวอย่าง
+                  </div>
                 </div>
                 <Exmple
                   colorTheme={color}
@@ -100,15 +107,11 @@ export default function Home() {
                   contentDetail="ตั้งแต่หน้า 110 - 150"
                   imagePathList={arr}
                 ></Exmple>
-                <div className="font-bold bg-gray-200 p-3  -mx-8 text-gray-500  shadow-sm">
+                <div className="font-bold bg-gray-200 p-3 -mx-6 rounded-xl text-gray-500  shadow-sm">
                   ใบงานที่เกี่ยวข้อง
                 </div>
                 <div className="h-auto">
-
-                  <div className="">
-
-                  </div>
-
+                  <div className=""></div>
                 </div>
               </CardBackground>
             </div>
@@ -118,4 +121,14 @@ export default function Home() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context: any) {
+  var detail = new DetailModel();
+  var json = await detail.getDetailById("aefdz7Oxsg35hZzhUX2X");
+  await detail.resolveCategory();
+  await detail.resolveExamGroup();
+  return {
+    props: { props: json },
+  };
 }

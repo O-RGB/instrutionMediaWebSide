@@ -9,11 +9,11 @@ const DetailHeader: React.FC<IDetailHeader> = ({ children,colorTheme }) => {
 
     colorTheme = colorTheme ?? "bg-gray-500";
 
-  const iconName = (title: string, detail: string, icon: any) => {
+  const iconName = (title: string, detail: string, icon: any,color?:string) => {
     return (
       <>
         <div className="flex gap-2 px-2 p-2">
-          <div className={`flex  ${colorTheme} w-12 h-12 sm:w-14 sm:h-14 rounded-md`}>
+          <div className={`flex  ${color ?? colorTheme} w-12 h-12 rounded-md`}>
             <div className="m-auto">{icon}</div>
           </div>
           <div className="flex">
@@ -35,17 +35,17 @@ const DetailHeader: React.FC<IDetailHeader> = ({ children,colorTheme }) => {
           <li>ราคาสินค้า</li>
         </ul>
       </div>
-      <div className="grid sm:grid-cols-12 py-3  ">
-        <div className="col-span-6 ">
+      <div className=" py-1   ">
+        {/* <div className="col-span-6 "> */}
           {iconName(
             "ปริ้นไม่เข้าเล่ม",
             "270 บาทรวมส่ง",
-            <FaPrint color="#FFFFFF" size={18} />
+            <FaPrint color="#FFFFFF" size={27} />,'bg-orange-400'
           )}
-        </div>
-        <div className="col-span-6 ">
-          {iconName("ไฟล์ PDF", "99 บาท", <FaFilePdf color="#FFFFFF" size={18}/>)}
-        </div>
+        {/* </div> */}
+        {/* <div className="col-span-6 "> */}
+          {iconName("ไฟล์ PDF", "99 บาท", <FaFilePdf color="#FFFFFF" size={27}/>,'bg-red-400')}
+        {/* </div> */}
       </div>
     </>
   );
