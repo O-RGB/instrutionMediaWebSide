@@ -11,7 +11,7 @@ const CardBackground: React.FC<ICardBackground> = ({
   rounded,
   titleHerder,
 }) => {
-  padding = padding ?? "py-5 px-8 sm:px-8";
+  padding = padding ?? "py-5 px-6";
   rounded = rounded ?? "rounded-lg";
   return (
     <>
