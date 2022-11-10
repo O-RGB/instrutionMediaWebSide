@@ -20,6 +20,7 @@ interface IDetailMock {
     title: string
     titleDetail: string
     imageHaderFront: string
+    imageHaderFrontWindows?: string
     imageHaderEnd: string
 }
 

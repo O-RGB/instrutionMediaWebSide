@@ -48,6 +48,7 @@ export const DetailMock: IDetailMock[] = [
     color: "bg-[#3891d9]",
     imageHaderEnd: "../ExamGroup/brain1/header/end.png",
     imageHaderFront: "../ExamGroup/brain1/header/front.png",
+    imageHaderFrontWindows: "../ExamGroup/brain1/header/windows.png",
     category: [
       Category["จับคู่รูปภาพ"].name,
       Category["รูปทรง"].name,

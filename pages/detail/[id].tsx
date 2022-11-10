@@ -14,8 +14,9 @@ import { DetailMock } from "../../mock/Detail";
 import React from "react";
 import NextHead from "../../components/NextHead";
 
-const Detail: NextPage = ({ props }: any) => {
+const Detail: NextPage = ({ props, preview }: any) => {
   const DetailMockState: IDetailMock | undefined = props;
+  const previewMode = preview;
   const color = "bg-gray-400";
 
   return (
@@ -25,7 +26,12 @@ const Detail: NextPage = ({ props }: any) => {
           <NextHead
             title={(DetailMockState as IDetailMock).title}
             description={(DetailMockState as IDetailMock).titleDetail}
-            image={(DetailMockState as IDetailMock).imageHaderFront}
+            image={
+              previewMode == "mobile"
+                ? (DetailMockState as IDetailMock).imageHaderFront
+                : (DetailMockState as IDetailMock).imageHaderFrontWindows ??
+                  (DetailMockState as IDetailMock).imageHaderFront
+            }
             url={`https://instrutionmediadetail.vercel.app/detail/${
               (DetailMockState as IDetailMock).url
             }`}
@@ -133,11 +139,15 @@ export default Detail;
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   let idTemp = context.params.id;
+  let preview = context.query?.mode;
   idTemp = (idTemp as string).split("?")[0];
   var data = DetailMock!.find((e) => e.url == idTemp);
   if (data == null) {
     data = undefined;
   }
+  if (preview == null) {
+    preview = "mobile";
+  }
 
-  return { props: { props: data } };
+  return { props: { props: data, preview: preview } };
 };
