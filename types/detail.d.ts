@@ -11,6 +11,7 @@ interface DetailCollection {
 }
 interface IDetailMock {
     url:string
+    color:string
     category: any[]
     content: string[]
     examGroup: IExamGroup[]
@@ -18,6 +19,8 @@ interface IDetailMock {
     print: number
     title: string
     titleDetail: string
+    imageHaderFront: string
+    imageHaderEnd: string
 }
 
 

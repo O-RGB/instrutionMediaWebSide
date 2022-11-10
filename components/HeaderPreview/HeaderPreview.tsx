@@ -49,12 +49,12 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
         </div>
         
         <div className="absolute -bottom-20 -right-10 z-0">
-          <img src="eff.svg" alt="" className="w-auto h-60 opacity-10 z-0" />
+          <img src="../eff.svg" alt="" className="w-auto h-60 opacity-10 z-0" />
         </div>
 
         <div className="absolute w-full -top-20 -left-40 z-0">
           <img
-            src="eff.svg"
+            src="../eff.svg"
             alt=""
             className="w-auto h-60  opacity-10 rotate-180 z-0"
           />

@@ -35,8 +35,8 @@ const Detail: NextPage = ({ props }: any) => {
           <div className="bg-gray-100">
             {/* <img src="imagetest.png" alt="" className=" w-full h-96 object-cover" /> */}
             <HeaderPreview
-              imagePath={"../imageExTest.png"}
-              imagePathBlack={"../imageExTest.png"}
+              imagePath={(DetailMockState as IDetailMock).imageHaderFront}
+              imagePathBlack={(DetailMockState as IDetailMock).imageHaderEnd}
               title={
                 DetailMockState != undefined
                   ? (DetailMockState as IDetailMock).title
@@ -47,7 +47,11 @@ const Detail: NextPage = ({ props }: any) => {
                   ? (DetailMockState as IDetailMock).titleDetail
                   : ""
               }
-              color={"bg-purple-600"}
+              color={
+                DetailMockState != undefined
+                  ? (DetailMockState as IDetailMock).color
+                  : "bg-purple-600"
+              }
             ></HeaderPreview>
             <Display>
               <div className="grid grid-cols-12 gap-3 ">
