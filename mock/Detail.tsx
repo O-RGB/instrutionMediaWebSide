@@ -44,7 +44,7 @@ export const DetailMock: IDetailMock[] = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita id commodi harum ipsam, voluptate obcaecati ",
   },
   {
-    url: "Brain1",
+    url: "brain1",
     color: "bg-[#3891d9]",
     imageHaderEnd: "../ExamGroup/brain1/header/end.png",
     imageHaderFront: "../ExamGroup/brain1/header/front.png",
