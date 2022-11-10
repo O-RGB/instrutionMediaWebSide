@@ -60,7 +60,7 @@ const Detail: NextPage = () => {
           <NextHead
             title={(DetailMockState as IDetailMock).title}
             description={(DetailMockState as IDetailMock).titleDetail}
-            image={`../ExamGroup/mathc1/mathc1_1.jpg`}
+            image={`https://pic-bstarstatic.akamaized.net/ugc/280d77b3c6f5333ba17d30163240fda41f659238.jpg`}
             url={`https://instrutionmediadetail.vercel.app/detail/${
               (DetailMockState as IDetailMock).url
             }`}
