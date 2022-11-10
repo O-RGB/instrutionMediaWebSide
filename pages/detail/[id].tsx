@@ -25,7 +25,7 @@ const Detail: NextPage = ({ props }: any) => {
           <NextHead
             title={(DetailMockState as IDetailMock).title}
             description={(DetailMockState as IDetailMock).titleDetail}
-            image={(DetailMockState as IDetailMock).examGroup[0].imagePath[0]}
+            image={(DetailMockState as IDetailMock).imageHaderFront}
             url={`https://instrutionmediadetail.vercel.app/detail/${
               (DetailMockState as IDetailMock).url
             }`}

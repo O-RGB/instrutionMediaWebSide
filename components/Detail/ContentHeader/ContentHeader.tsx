@@ -20,14 +20,14 @@ const ContentHeader: React.FC<IContentHeader> = ({
     return (
       <>
         <div className="flex gap-2 py-1 ">
-          <div className={`flex ${colorTheme} w-8 h-8  rounded-md`}>
-            <div className="m-auto text-white text-base font-bold ">
+          <div className={`flex ${colorTheme} w-6 h-6  rounded-md`}>
+            <div className="m-auto text-white text-sm font-bold ">
               {index}
             </div>
           </div>
           <div className="flex">
             <div className="m-auto">
-              <div className="text-lg text-gray-700">{detail}</div>
+              <div className="text-sm text-gray-700">{detail}</div>
             </div>
           </div>
         </div>
@@ -41,11 +41,11 @@ const ContentHeader: React.FC<IContentHeader> = ({
           <li>เนื้อหา</li>
         </ul>
       </div>
-      <div className="flex flex-wrap px-2  justify-start">
+      <div className="flex flex-wrap px-2 gap-1  justify-start">
         {contect.map((e, i) => {
           return (
             <React.Fragment key={`element-index-key${i}`}>
-              <div className=" w-full md:w-2/5  ">{element(e, i + 1)}</div>
+              <div className=" w-full md:w-5/12  ">{element(e, i + 1)}</div>
             </React.Fragment>
           );
         })}
