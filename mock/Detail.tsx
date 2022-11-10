@@ -47,7 +47,7 @@ export const DetailMock: IDetailMock[] = [
     url: "brain1",
     color: "bg-[#3891d9]",
     imageHaderEnd: "../ExamGroup/brain1/header/end.png",
-    imageHaderFront: "../ExamGroup/brain1/header/front.png",
+    imageHaderFront: "../ExamGroup/brain1/header/windows.png",
     imageHaderFrontWindows: "../ExamGroup/brain1/header/windows.png",
     category: [
       Category["จับคู่รูปภาพ"].name,
