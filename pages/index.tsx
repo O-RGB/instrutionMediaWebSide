@@ -37,6 +37,8 @@ const Home: NextPage = () => {
 
   const color = "bg-gray-400";
 
+  
+
   return (
     <>
       <Header></Header>

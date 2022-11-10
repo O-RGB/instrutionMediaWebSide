@@ -9,3 +9,19 @@ interface DetailCollection {
     title: string
     titleDetail: string
 }
+interface IDetailMock {
+    url:string
+    category: any[]
+    content: string[]
+    examGroup: IExamGroup[]
+    file: number
+    print: number
+    title: string
+    titleDetail: string
+}
+
+
+interface IExamGroup{
+    name:string,
+    imagePath:string[]
+}
