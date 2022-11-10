@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import CardBackground from "../../components/CardBackground";
@@ -14,44 +14,9 @@ import { DetailMock } from "../../mock/Detail";
 import React from "react";
 import NextHead from "../../components/NextHead";
 
-const Detail: NextPage = () => {
-  const [DetailMockState, setDetailMock] = useState<IDetailMock | undefined>(
-    undefined
-  );
-  const router = useRouter();
-  const { id } = router.query;
-  const arr = [
-    "1.png",
-    "1.png",
-    "1.png",
-    "1.png",
-    "1.png",
-    "1.png",
-    "1.png",
-    "1.png",
-  ];
-
+const Detail: NextPage = ({ props }: any) => {
+  const DetailMockState: IDetailMock | undefined = props;
   const color = "bg-gray-400";
-  useEffect(() => {
-    if (id) {
-      let idTemp = id;
-      idTemp = (idTemp as string).split("?")[0];
-      var data = DetailMock!.find((e) => e.url == id);
-      if (data != null) {
-        setDetailMock(data);
-        console.log(data.examGroup);
-      }
-
-      // detail.getDetailById(idTemp).then((voids) => {
-      //   Promise.all([detail.resolveCategory(), detail.resolveExamGroup()]).then(
-      //     (data) => {
-
-      //       setDetailCollection(detail.toDetailCollection());
-      //     }
-      //   );
-      // });
-    }
-  }, [id]);
 
   return (
     <>
@@ -161,3 +126,14 @@ const Detail: NextPage = () => {
 };
 
 export default Detail;
+
+export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  let idTemp = context.params.id;
+  idTemp = (idTemp as string).split("?")[0];
+  var data = DetailMock!.find((e) => e.url == idTemp);
+  if (data == null) {
+    data = undefined;
+  }
+
+  return { props: { props: data } };
+};
