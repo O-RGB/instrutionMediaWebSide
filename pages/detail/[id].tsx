@@ -29,8 +29,9 @@ const Detail: NextPage = ({ props, preview }: any) => {
             image={
               previewMode == "mobile"
                 ? (DetailMockState as IDetailMock).imageHaderFront
-                : (DetailMockState as IDetailMock).imageHaderFrontWindows ??
-                  (DetailMockState as IDetailMock).imageHaderFront
+                : previewMode == "windows"
+                ? (DetailMockState as IDetailMock).imageHaderFrontWindows
+                : (DetailMockState as IDetailMock).imageHaderFront
             }
             url={`https://instrutionmediadetail.vercel.app/detail/${
               (DetailMockState as IDetailMock).url
@@ -79,6 +80,7 @@ const Detail: NextPage = ({ props, preview }: any) => {
                     rounded="rounded-b-md"
                     titleHerder="รายละเอียด"
                   >
+                    <h1>{previewMode}</h1>
                     <CategoryHeader
                       tag={
                         DetailMockState != undefined
