@@ -1,17 +1,22 @@
-/* eslint-disable @next/next/no-img-element */
-import CardBackground from "../components/CardBackground";
-import Display from "../components/Display";
-import Exmple from "../components/Detail/Exmple";
-import Header from "../components/Header";
-import HeaderPreview from "../components/HeaderPreview/HeaderPreview";
-import React from "react";
-import DetailHeader from "../components/Detail/DetailHeader";
-import ContentHeader from "../components/Detail/ContentHeader";
 import { NextPage } from "next";
-const Home: NextPage = () => {
-  
+import { useRouter }  from 'next/router'
+import { useEffect, useState } from "react";
+import CardBackground from "../../components/CardBackground";
+import CategoryHeader from "../../components/Detail/CategoryHeader";
+import ContentHeader from "../../components/Detail/ContentHeader";
+import DetailHeader from "../../components/Detail/DetailHeader";
+import Exmple from "../../components/Detail/Exmple";
+import Display from "../../components/Display";
+import Header from "../../components/Header";
+import HeaderPreview from "../../components/HeaderPreview";
+import { DetailModel } from "../../model/Detail";
 
-
+const Detail: NextPage = () => {
+  const [DetailCollection, setDetailCollection] = useState<
+    DetailCollection | undefined
+  >(undefined);
+  const router = useRouter();
+  const { id } = router.query;
   const arr = [
     "1.png",
     "1.png",
@@ -36,17 +41,39 @@ const Home: NextPage = () => {
 
   const color = "bg-gray-400";
 
+  useEffect(() => {
+    if (id) {
+      let idTemp = id;
+      idTemp = (idTemp as string).split("?")[0];
+      console.log(idTemp);
+      var detail = new DetailModel();
+      detail.getDetailById(idTemp).then((voids) => {
+        Promise.all([detail.resolveCategory(), detail.resolveExamGroup()]).then(
+          (data) => {
+            setDetailCollection(detail.toDetailCollection());
+          }
+        );
+      });
+    }
+  }, [id]);
+
   return (
     <>
       <Header></Header>
       <div className="bg-gray-100">
         {/* <img src="imagetest.png" alt="" className=" w-full h-96 object-cover" /> */}
         <HeaderPreview
-          imagePath={"imageExTest.png"}
-          imagePathBlack={"imageExTest.png"}
-          title={"คณิตศาสตร์ ป.1"}
+          imagePath={"../imageExTest.png"}
+          imagePathBlack={"../imageExTest.png"}
+          title={
+            DetailCollection != undefined
+              ? (DetailCollection as DetailCollection).title
+              : ""
+          }
           titleDetail={
-            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit commodi nisi cumque veritatis eligendi eveniet architecto illo laudantium. Culpa ullam, et delenit"
+            DetailCollection != undefined
+              ? (DetailCollection as DetailCollection).titleDetail
+              : ""
           }
           color={"bg-purple-600"}
         ></HeaderPreview>
@@ -67,13 +94,26 @@ const Home: NextPage = () => {
             </div>
             <div className="col-span-12 lg:col-span-10">
               <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
+                <CategoryHeader
+                  tag={
+                    DetailCollection != undefined
+                      ? (DetailCollection as DetailCollection).category
+                      : []
+                  }
+                ></CategoryHeader>
                 <DetailHeader colorTheme={color}></DetailHeader>
                 <ContentHeader
                   colorTheme={color}
-                  contect={elementTest}
+                  contect={
+                    DetailCollection != undefined
+                      ? (DetailCollection as DetailCollection).content
+                      : []
+                  }
                 ></ContentHeader>
-                <div className="font-bold bg-gray-100 p-3  -mx-8 text-gray-500  shadow-sm">
-                  ตัวอย่าง
+                <div className="pb-2">
+                  <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
+                    ตัวอย่าง
+                  </div>
                 </div>
                 <Exmple
                   colorTheme={color}
@@ -103,15 +143,11 @@ const Home: NextPage = () => {
                   contentDetail="ตั้งแต่หน้า 110 - 150"
                   imagePathList={arr}
                 ></Exmple>
-                <div className="font-bold bg-gray-200 p-3  -mx-8 text-gray-500  shadow-sm">
+                <div className="font-bold bg-gray-200 p-3 -mx-6 rounded-xl text-gray-500  shadow-sm">
                   ใบงานที่เกี่ยวข้อง
                 </div>
                 <div className="h-auto">
-
-                  <div className="">
-
-                  </div>
-
+                  <div className=""></div>
                 </div>
               </CardBackground>
             </div>
@@ -121,6 +157,6 @@ const Home: NextPage = () => {
       </div>
     </>
   );
-}
+};
 
-export default Home;
+export default Detail;
