@@ -6,7 +6,7 @@ interface IExmple {
   colorTheme?: string;
   content: string;
   contentDetail: string;
-  number:string
+  number: string;
 }
 
 const Exmple: React.FC<IExmple> = ({
@@ -14,8 +14,7 @@ const Exmple: React.FC<IExmple> = ({
   colorTheme,
   content,
   contentDetail,
-  number
-
+  number,
 }) => {
   colorTheme = colorTheme ?? "bg-gray-500";
   return (
@@ -23,7 +22,9 @@ const Exmple: React.FC<IExmple> = ({
       <div className="py-1 sticky top-14 -mx-3 sm:-mx-0 h-full bg-white  border-b">
         <div className="flex gap-2 py-1  ">
           <div className={`flex ${colorTheme} w-9 h-9  rounded-md mt-1`}>
-            <div className="m-auto text-white text-1xl font-bold ">{number}</div>
+            <div className="m-auto text-white text-1xl font-bold ">
+              {number}
+            </div>
           </div>
           <div className="flex">
             <div className="m-auto">
@@ -39,7 +40,7 @@ const Exmple: React.FC<IExmple> = ({
           return (
             <React.Fragment key={`image-ex-${i}`}>
               <img
-                src={e}
+                src={`../${e}`}
                 alt=""
                 className="imgPrint w-full sm:w-auto m-auto h-auto bg-black   pointer-events-none"
               />

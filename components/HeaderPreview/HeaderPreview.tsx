@@ -25,12 +25,12 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
               <div className="col-span-6 m-auto ">
                 <div className="w-full flex gap-4  ">
                   <img
-                    src={imagePath}
+                    src={`../${imagePath}`}
                     alt=""
                     className="z-20 w-auto h-32 sm:h-40 md:h-40 lg:h-56 object-contain rounded-md shadow-md"
                   />
                   <img
-                    src={imagePathBlack}
+                    src={`../${imagePathBlack}`}
                     alt=""
                     className="z-20 w-auto  h-32 sm:h-40 md:h-40 lg:h-56 object-contain rounded-md shadow-md"
                   />
