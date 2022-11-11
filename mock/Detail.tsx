@@ -10,6 +10,7 @@ export const DetailMock: IDetailMock[] = [
     examGroup: [
       {
         name: "การบวก",
+        pageNumber:"",
         imagePath: [
           "ExamGroup/mathc1/mathc1_1.jpg",
           "ExamGroup/mathc1/mathc1_1.jpg",
@@ -24,6 +25,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "การบวก",
+        pageNumber:"",
         imagePath: [
           "ExamGroup/mathc1/mathc1_1.jpg",
           "ExamGroup/mathc1/mathc1_1.jpg",
@@ -77,6 +79,7 @@ export const DetailMock: IDetailMock[] = [
     examGroup: [
       {
         name: "โยงจับคู่รูปภาพและเงาที่สัมพันธ์กัน",
+        pageNumber: "ตั้งแต่หน้า 2 - 36",
         imagePath: [
           "ExamGroup/brain1/brain1_1/1.jpg",
           "ExamGroup/brain1/brain1_1/2.jpg",
@@ -86,6 +89,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "โยงจับคู่รูปภาพอีกครึ่งที่หายไป",
+        pageNumber: "ตั้งแต่หน้า 36 - 70",
         imagePath: [
           "ExamGroup/brain1/brain1_2/1.jpg",
           "ExamGroup/brain1/brain1_2/2.jpg",
@@ -94,6 +98,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "โยงจับคู่รูปภาพที่เหมือนกัน",
+        pageNumber: "ตั้งแต่หน้า 70 - 106",
         imagePath: [
           "ExamGroup/brain1/brain1_3/1.jpg",
           "ExamGroup/brain1/brain1_3/2.jpg",
@@ -104,6 +109,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "โยงจับคู่รูปทรงและเงาที่เหมือนกัน",
+        pageNumber: "ตั้งแต่หน้า 106 - 116",
         imagePath: [
           "ExamGroup/brain1/brain1_3/1.jpg",
           "ExamGroup/brain1/brain1_3/2.jpg",
@@ -114,6 +120,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "กากบาททับภาพที่ต่างจากพวก",
+        pageNumber: "ตั้งแต่หน้า 116 - 146",
         imagePath: [
           "ExamGroup/brain1/brain1_4/1.jpg",
           "ExamGroup/brain1/brain1_4/2.jpg",
@@ -121,6 +128,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "กากบาททับภาพเหมือนกับที่กำหนดให้",
+        pageNumber: "ตั้งแต่หน้า 146 - 166",
         imagePath: [
           "ExamGroup/brain1/brain1_5/1.jpg",
           "ExamGroup/brain1/brain1_5/2.jpg",
@@ -131,6 +139,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "กากบาททับรูปทรงที่เหมือนกัน",
+        pageNumber: "ตั้งแต่หน้า 166 - 176",
         imagePath: [
           "ExamGroup/brain1/brain1_6/1.jpg",
           "ExamGroup/brain1/brain1_6/2.jpg",
@@ -140,6 +149,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "สูงกว่าและต่ำกว่า",
+        pageNumber: "ตั้งแต่หน้า 176 - 187",
         imagePath: [
           "ExamGroup/brain1/brain1_7/1.jpg",
           "ExamGroup/brain1/brain1_7/2.jpg",
@@ -147,6 +157,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "เล็กกว่าและใหญ่กว่า",
+        pageNumber: "ตั้งแต่หน้า 187 - 197",
         imagePath: [
           "ExamGroup/brain1/brain1_8/1.jpg",
           "ExamGroup/brain1/brain1_8/2.jpg",
@@ -154,6 +165,7 @@ export const DetailMock: IDetailMock[] = [
       },
       {
         name: "สั้นกว่าและยาวกว่า",
+        pageNumber: "ตั้งแต่หน้า 197 - 207",
         imagePath: [
           "ExamGroup/brain1/brain1_9/1.jpg",
           "ExamGroup/brain1/brain1_9/2.jpg",
@@ -161,16 +173,15 @@ export const DetailMock: IDetailMock[] = [
       },
     ],
     file: 99,
-    print: 270,
     craditOnPaper: true,
     freeMode: false,
     paperCheck: true,
-    paperNumber: 168,
+    paperNumber: 206,
     pdfEdit: false,
     downLoadFile: false,
     scrollAuto: true,
     title: "เชาว์ปัญญา อ.1",
     titleDetail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita id commodi harum ipsam, voluptate obcaecati ",
+      "เชาว์ปัญญาเป็นความสามารถในการคิด การใช้เหตุผล การคำนวณ การเชื่อมโยง และไอคิว เป็นศักยภาพทางสมองที่ติดตัวมาแต่กำเนิด",
   },
 ];

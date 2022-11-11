@@ -83,7 +83,7 @@ const FormatHeader: React.FC<IFormatHeader> = ({
           "  bg-indigo-400"
         )}
 
-        {fileEdit == true ? (
+        {fileEdit == false ? (
           <>
             {iconName(
               "ไฟล์ PDF แก้ไขไม่ได้",

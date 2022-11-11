@@ -3,9 +3,16 @@ import { FaFilePdf, FaPrint } from "react-icons/fa";
 interface IDetailHeader {
   children?: React.ReactNode;
   colorTheme?: string;
+  print?: number;
+  file?: number;
 }
 
-const DetailHeader: React.FC<IDetailHeader> = ({ children, colorTheme }) => {
+const DetailHeader: React.FC<IDetailHeader> = ({
+  children,
+  colorTheme,
+  print,
+  file,
+}) => {
   colorTheme = colorTheme ?? "bg-gray-500";
 
   const iconName = (
@@ -38,19 +45,33 @@ const DetailHeader: React.FC<IDetailHeader> = ({ children, colorTheme }) => {
         </ul>
       </div>
       <div className=" py-1   ">
-        {iconName(
-          "ปริ้นไม่เข้าเล่ม",
-          "270 บาทรวมส่ง",
-          <FaPrint color="#FFFFFF" size={27} />,
-          "bg-orange-400"
-        )}
+        {print
+          ? iconName(
+              "ปริ้นไม่เข้าเล่ม",
+              "270 บาทรวมส่ง",
+              <FaPrint color="#FFFFFF" size={27} />,
+              "bg-orange-400"
+            )
+          : iconName(
+              "ไม่รับปริ้น",
+              "ไม่อนุญาตให้ปริ้นเป็นเอกสาร",
+              <FaPrint color="#FFFFFF" size={27} />,
+              "bg-gray-300"
+            )}
 
-        {iconName(
-          "ไฟล์ PDF",
-          "99 บาท",
-          <FaFilePdf color="#FFFFFF" size={27} />,
-          "bg-red-400"
-        )}
+        {file
+          ? iconName(
+              "ไฟล์ PDF",
+              "99 บาท",
+              <FaFilePdf color="#FFFFFF" size={27} />,
+              "bg-red-400"
+            )
+          : iconName(
+              "ไม่ขายไฟล์ PDF",
+              "ไม่อนุญาตให้ขายไฟล์",
+              <FaFilePdf color="#FFFFFF" size={27} />,
+              "bg-gray-300"
+            )}
       </div>
     </>
   );

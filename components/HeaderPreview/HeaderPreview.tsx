@@ -39,7 +39,7 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
               <div className="col-span-6 text-lg flex m-auto">
                 <div className=" text-center sm:text-left">
                   <div className="text-2xl font-bold z-20">{title}</div>
-                  <div className="text-base z-20">
+                  <div className="text-base z-20 py-2">
                    {titleDetail}
                   </div>
                 </div>

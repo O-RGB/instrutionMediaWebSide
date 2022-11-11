@@ -72,7 +72,11 @@ const Detail: NextPage = ({ props, preview }: any) => {
                       : []
                   }
                 ></CategoryHeader>
-                <DetailHeader colorTheme={color}></DetailHeader>
+                <DetailHeader
+                  file={(DetailMockState as IDetailMock).file}
+                  print={(DetailMockState as IDetailMock).print}
+                  colorTheme={color}
+                ></DetailHeader>
                 <FormatHeader
                   colorTheme={color}
                   paperNumber={(DetailMockState as IDetailMock).paperNumber}
@@ -98,7 +102,7 @@ const Detail: NextPage = ({ props, preview }: any) => {
                 )}
 
                 <ContentHeader
-                scrollToDisable={(DetailMockState as IDetailMock).scrollAuto}
+                  scrollToDisable={(DetailMockState as IDetailMock).scrollAuto}
                   arrRef={arrRef}
                   colorTheme={color}
                   contect={
@@ -124,7 +128,7 @@ const Detail: NextPage = ({ props, preview }: any) => {
                               colorTheme={color}
                               number={`${i + 1}`}
                               content={e.name}
-                              contentDetail="ตั้งแต่หน้า 1 - 50"
+                              contentDetail={e.pageNumber}
                               imagePathList={e.imagePath}
                             ></Exmple>
                           </div>

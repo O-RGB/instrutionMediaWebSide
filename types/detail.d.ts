@@ -37,5 +37,6 @@ interface IDetailMock {
 
 interface IExamGroup{
     name:string,
+    pageNumber:string,
     imagePath:string[]
 }
