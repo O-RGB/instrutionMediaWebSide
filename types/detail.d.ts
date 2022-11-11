@@ -19,6 +19,7 @@ interface IDetailMock {
     print?: number
     title: string
     titleDetail: string
+    imagePreview: string
 
     paperNumber:number
     paperCheck:boolean

@@ -29,12 +29,12 @@ const Detail: NextPage = ({ props, preview }: any) => {
           <NextHead
             title={(DetailMockState as IDetailMock).title}
             description={(DetailMockState as IDetailMock).titleDetail}
-            image={`https://instrutionmediadetail.vercel.app/${
+            image={`${
               previewMode == "mobile"
-                ? (DetailMockState as IDetailMock).imageHaderFront
+                ? (DetailMockState as IDetailMock).imagePreview
                 : previewMode == "windows"
-                ? (DetailMockState as IDetailMock).imageHaderFrontWindows
-                : (DetailMockState as IDetailMock).imageHaderFront
+                ? (DetailMockState as IDetailMock).imagePreview
+                : (DetailMockState as IDetailMock).imagePreview
             }`}
             url={`https://instrutionmediadetail.vercel.app/detail/${
               (DetailMockState as IDetailMock).url

@@ -7,6 +7,7 @@ export const DetailMock: IDetailMock[] = [
     imageHaderEnd: "",
     imageHaderFront: "",
     content: ["การบวก", "การบวก"],
+    imagePreview:'',
     examGroup: [
       {
         name: "การบวก",
@@ -57,6 +58,7 @@ export const DetailMock: IDetailMock[] = [
     color: "bg-[#3891d9]",
     imageHaderEnd: "ExamGroup/brain1/header/end.png",
     imageHaderFront: "ExamGroup/brain1/header/front.png",
+    imagePreview: "https://i.imgur.com/a1vMlXE.png",
     imageHaderFrontWindows: "ExamGroup/brain1/header/windows.png",
     category: [
       Category["จับคู่รูปภาพ"].name,
