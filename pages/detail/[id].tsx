@@ -14,6 +14,7 @@ import { DetailMock } from "../../mock/Detail";
 import React from "react";
 import NextHead from "../../components/NextHead";
 import FormatHeader from "../../components/Detail/FormatHeader";
+import FreeHeader from "../../components/Detail/FreeHeader";
 
 const Detail: NextPage = ({ props, preview }: any) => {
   const DetailMockState: IDetailMock | undefined = props;
@@ -73,6 +74,7 @@ const Detail: NextPage = ({ props, preview }: any) => {
                 ></CategoryHeader>
                 <DetailHeader colorTheme={color}></DetailHeader>
                 <FormatHeader colorTheme={color}></FormatHeader>
+                <FreeHeader colorTheme={color}></FreeHeader>
                 <ContentHeader
                   arrRef={arrRef}
                   colorTheme={color}

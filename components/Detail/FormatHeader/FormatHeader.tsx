@@ -1,4 +1,4 @@
-import { FaFilePdf, FaPrint, FaLock, FaBook } from "react-icons/fa";
+import { FaFilePdf, FaPrint, FaLock, FaBook, FaCheck } from "react-icons/fa";
 
 interface IFormatHeader {
   children?: React.ReactNode;
@@ -37,7 +37,7 @@ const FormatHeader: React.FC<IFormatHeader> = ({ children, colorTheme }) => {
           <li>รูปแบบ</li>
         </ul>
       </div>
-      <div className=" py-1   ">
+      <div className=" py-1  ">
         {iconName(
           "120 หน้า",
           "รวมปกหน้าหลัง",
@@ -46,7 +46,14 @@ const FormatHeader: React.FC<IFormatHeader> = ({ children, colorTheme }) => {
         )}
 
         {iconName(
-          "ไฟล์แก้ไขไม่ได้",
+          "มีเฉลย",
+          "เฉลยส่งพร้อมกับไฟล์ใบงาน",
+          <FaCheck color="#FFFFFF" size={27} />,
+          "  bg-indigo-400"
+        )}
+
+        {iconName(
+          "ไฟล์ PDF แก้ไขไม่ได้",
           "File Locked จากผู้พัฒนา",
           <FaLock color="#FFFFFF" size={27} />,
           "bg-pink-400"

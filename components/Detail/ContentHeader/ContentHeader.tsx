@@ -23,7 +23,7 @@ const ContentHeader: React.FC<IContentHeader> = ({
     // }
     if (ref && ref.current) {
       window.scrollTo({
-        top: ref.current.offsetTop - 85,
+        top: ref.current.offsetTop - 75,
         behavior: "smooth",
       });
     }
@@ -66,7 +66,7 @@ const ContentHeader: React.FC<IContentHeader> = ({
                   }
                 }}
                 id={e}
-                className=" w-full md:w-5/12 cursor-pointer bg-white hover:bg-gray-200 rounded-md px-2 duration-300 "
+                className=" w-full md:w-5/12 cursor-pointer bg-white hover:bg-gray-200 rounded-md px-1 duration-300 "
               >
                 {element(e, i + 1)}
               </div>
