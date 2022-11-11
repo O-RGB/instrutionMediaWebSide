@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import CardBackground from "../../components/CardBackground";
 import CategoryHeader from "../../components/Detail/CategoryHeader";
 import ContentHeader from "../../components/Detail/ContentHeader";
@@ -13,11 +13,13 @@ import { DetailModel } from "../../model/Detail";
 import { DetailMock } from "../../mock/Detail";
 import React from "react";
 import NextHead from "../../components/NextHead";
+import FormatHeader from "../../components/Detail/FormatHeader";
 
 const Detail: NextPage = ({ props, preview }: any) => {
   const DetailMockState: IDetailMock | undefined = props;
   const previewMode = preview;
   const color = "bg-gray-400";
+  var arrRef: any[] = [];
 
   return (
     <>
@@ -70,7 +72,9 @@ const Detail: NextPage = ({ props, preview }: any) => {
                   }
                 ></CategoryHeader>
                 <DetailHeader colorTheme={color}></DetailHeader>
+                <FormatHeader colorTheme={color}></FormatHeader>
                 <ContentHeader
+                  arrRef={arrRef}
                   colorTheme={color}
                   contect={
                     DetailMockState != undefined
@@ -85,17 +89,24 @@ const Detail: NextPage = ({ props, preview }: any) => {
                 </div>
 
                 <>
-                  {(DetailMockState as IDetailMock).examGroup.map((e, i) => (
-                    <React.Fragment key={`exam_g_${i}`}>
-                      <Exmple
-                        colorTheme={color}
-                        number={`${i + 1}`}
-                        content={e.name}
-                        contentDetail="ตั้งแต่หน้า 1 - 50"
-                        imagePathList={e.imagePath}
-                      ></Exmple>
-                    </React.Fragment>
-                  ))}
+                  {(DetailMockState as IDetailMock).examGroup.map((e, i) => {
+                    arrRef.push(createRef());
+                    return (
+                      <>
+                        <React.Fragment key={`exam_g_${i}`}>
+                          <div ref={arrRef[i]}>
+                            <Exmple
+                              colorTheme={color}
+                              number={`${i + 1}`}
+                              content={e.name}
+                              contentDetail="ตั้งแต่หน้า 1 - 50"
+                              imagePathList={e.imagePath}
+                            ></Exmple>
+                          </div>
+                        </React.Fragment>
+                      </>
+                    );
+                  })}
                 </>
 
                 <div className="h-auto">

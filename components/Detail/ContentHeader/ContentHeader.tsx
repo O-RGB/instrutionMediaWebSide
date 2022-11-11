@@ -5,25 +5,36 @@ interface IContentHeader {
   children?: React.ReactNode;
   contect: string[];
   colorTheme?: string;
+  arrRef?: any[];
 }
 
 const ContentHeader: React.FC<IContentHeader> = ({
   children,
   contect,
+  arrRef,
   colorTheme,
 }) => {
   colorTheme = colorTheme ?? "bg-gray-500";
+  arrRef = arrRef ?? [];
 
-
+  const scrollTo = (ref: any) => {
+    // if (ref && ref.current /* + other conditions */) {
+    //   ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    // }
+    if (ref && ref.current) {
+      window.scrollTo({
+        top: ref.current.offsetTop - 85,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const element = (detail: string, index: number) => {
     return (
       <>
         <div className="flex gap-2 py-1 ">
-          <div className={`flex ${colorTheme} w-6 h-6  rounded-md`}>
-            <div className="m-auto text-white text-sm font-bold ">
-              {index}
-            </div>
+          <div className={`flex-none ${colorTheme} w-6 h-6  rounded-md`}>
+            <div className="m-auto text-white text-center justify-center mt-0.5 text-sm font-bold ">{index}</div>
           </div>
           <div className="flex">
             <div className="m-auto">
@@ -36,16 +47,29 @@ const ContentHeader: React.FC<IContentHeader> = ({
   };
   return (
     <>
-      <div className="font-bold py-2  text-gray-700  text-xl">
+      <div className="font-bold py-2 pb-4  text-gray-700  text-xl">
         <ul className="list-disc pl-2 ">
           <li>เนื้อหา</li>
+          <div className="text-xs font-normal">
+            *กดเพื่อกระโดดไปภาพเนื้อหาตัวอย่างที่ต้องการ
+          </div>
         </ul>
       </div>
       <div className="flex flex-wrap px-2 gap-1  justify-start">
         {contect.map((e, i) => {
           return (
             <React.Fragment key={`element-index-key${i}`}>
-              <div className=" w-full md:w-5/12  ">{element(e, i + 1)}</div>
+              <div
+                onClick={() => {
+                  if (arrRef!.length > 0) {
+                    scrollTo(arrRef![i]);
+                  }
+                }}
+                id={e}
+                className=" w-full md:w-5/12 cursor-pointer bg-white hover:bg-gray-200 rounded-md px-2 duration-300 "
+              >
+                {element(e, i + 1)}
+              </div>
             </React.Fragment>
           );
         })}

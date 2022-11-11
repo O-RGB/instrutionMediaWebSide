@@ -1,11 +1,11 @@
-import { FaFilePdf, FaPrint } from "react-icons/fa";
+import { FaFilePdf, FaPrint, FaLock, FaBook } from "react-icons/fa";
 
-interface IDetailHeader {
+interface IFormatHeader {
   children?: React.ReactNode;
   colorTheme?: string;
 }
 
-const DetailHeader: React.FC<IDetailHeader> = ({ children, colorTheme }) => {
+const FormatHeader: React.FC<IFormatHeader> = ({ children, colorTheme }) => {
   colorTheme = colorTheme ?? "bg-gray-500";
 
   const iconName = (
@@ -32,28 +32,37 @@ const DetailHeader: React.FC<IDetailHeader> = ({ children, colorTheme }) => {
   };
   return (
     <>
-      <div className="font-bold text-gray-700 text-xl">
+      <div className="font-bold text-gray-700 text-xl ">
         <ul className="list-disc pl-2 ">
-          <li>ราคาสินค้า</li>
+          <li>รูปแบบ</li>
         </ul>
       </div>
       <div className=" py-1   ">
         {iconName(
-          "ปริ้นไม่เข้าเล่ม",
-          "270 บาทรวมส่ง",
-          <FaPrint color="#FFFFFF" size={27} />,
-          "bg-orange-400"
+          "120 หน้า",
+          "รวมปกหน้าหลัง",
+          <FaBook color="#FFFFFF" size={27} />,
+          "bg-green-400"
         )}
 
         {iconName(
-          "ไฟล์ PDF",
-          "99 บาท",
-          <FaFilePdf color="#FFFFFF" size={27} />,
-          "bg-red-400"
+          "ไฟล์แก้ไขไม่ได้",
+          "File Locked จากผู้พัฒนา",
+          <FaLock color="#FFFFFF" size={27} />,
+          "bg-pink-400"
+        )}
+
+        {iconName(
+          "มีเครดิต",
+          "เครดิตเพจติดทุกหน้า",
+          <>
+            <img src="../iconLogo.svg" alt="" className="w-6 h-6" />
+          </>,
+          "bg-purple-400"
         )}
       </div>
     </>
   );
 };
 
-export default DetailHeader;
+export default FormatHeader;
