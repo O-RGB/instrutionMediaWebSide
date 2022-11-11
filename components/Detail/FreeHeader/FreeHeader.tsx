@@ -3,9 +3,14 @@ import { FaFilePdf, FaPrint, FaLock, FaBook, FaSave } from "react-icons/fa";
 interface IFreeHeader {
   children?: React.ReactNode;
   colorTheme?: string;
+  downLoadFile: boolean;
 }
 
-const FreeHeader: React.FC<IFreeHeader> = ({ children, colorTheme }) => {
+const FreeHeader: React.FC<IFreeHeader> = ({
+  children,
+  colorTheme,
+  downLoadFile,
+}) => {
   colorTheme = colorTheme ?? "bg-gray-500";
 
   const iconName = (
@@ -38,20 +43,19 @@ const FreeHeader: React.FC<IFreeHeader> = ({ children, colorTheme }) => {
         </ul>
       </div>
       <div className=" py-1   ">
-        {iconName(
-          "Save As รูปภาพ",
-          "ต้องบันทึกทีละภาพ",
-          <FaSave color="#FFFFFF" size={27} />,
-          " bg-blue-400"
-        )}
-        {iconName(
-          "Download PDF File",
-          "กดดาวน์โหลดที่ด้านล่างตัวอย่าง",
-          <FaSave color="#FFFFFF" size={27} />,
-          " bg-blue-400"
-        )}
-
-        
+        {downLoadFile == false
+          ? iconName(
+              "Save As รูปภาพ",
+              "ต้องบันทึกทีละภาพ",
+              <FaSave color="#FFFFFF" size={27} />,
+              " bg-blue-400"
+            )
+          : iconName(
+              "Download PDF File",
+              "กดดาวน์โหลดที่ด้านล่างตัวอย่าง",
+              <FaSave color="#FFFFFF" size={27} />,
+              " bg-blue-400"
+            )}
       </div>
     </>
   );

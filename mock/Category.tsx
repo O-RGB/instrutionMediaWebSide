@@ -1,22 +1,22 @@
 export const Category: any = {
   "คณิตศาสตร์": {
-    reference: [""],
+    reference: ["mathc1"],
     name: "คณิตศาสตร์",
   },
   "จับคู่รูปภาพ": {
-    reference: [""],
+    reference: ["brain1"],
     name: "จับคู่รูปภาพ",
   },
   "รูปทรง": {
-    reference: [""],
+    reference: ["brain1"],
     name: "รูปทรง",
   },
   "รูปภาพที่เหมือนกัน": {
-    reference: [""],
+    reference: ["brain1"],
     name: "รูปภาพที่เหมือนกัน",
   },
   "กากบาททับภาพ": {
-    reference: [""],
+    reference: ["brain1"],
     name: "กากบาททับภาพ",
   },
 };

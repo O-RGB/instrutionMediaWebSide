@@ -73,9 +73,32 @@ const Detail: NextPage = ({ props, preview }: any) => {
                   }
                 ></CategoryHeader>
                 <DetailHeader colorTheme={color}></DetailHeader>
-                <FormatHeader colorTheme={color}></FormatHeader>
-                <FreeHeader colorTheme={color}></FreeHeader>
+                <FormatHeader
+                  colorTheme={color}
+                  paperNumber={(DetailMockState as IDetailMock).paperNumber}
+                  paperCheck={(DetailMockState as IDetailMock).paperCheck}
+                  fileEdit={(DetailMockState as IDetailMock).pdfEdit}
+                  craditOnPaper={(DetailMockState as IDetailMock).craditOnPaper}
+                ></FormatHeader>
+                {DetailMockState != undefined ? (
+                  (DetailMockState as IDetailMock).freeMode == true ? (
+                    <>
+                      <FreeHeader
+                        downLoadFile={
+                          (DetailMockState as IDetailMock).downLoadFile ?? false
+                        }
+                        colorTheme={color}
+                      ></FreeHeader>
+                    </>
+                  ) : (
+                    <></>
+                  )
+                ) : (
+                  <></>
+                )}
+
                 <ContentHeader
+                scrollToDisable={(DetailMockState as IDetailMock).scrollAuto}
                   arrRef={arrRef}
                   colorTheme={color}
                   contect={

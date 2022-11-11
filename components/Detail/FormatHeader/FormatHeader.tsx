@@ -1,11 +1,30 @@
-import { FaFilePdf, FaPrint, FaLock, FaBook, FaCheck } from "react-icons/fa";
+import {
+  FaFilePdf,
+  FaPrint,
+  FaLock,
+  FaBook,
+  FaCheck,
+  FaUnlock,
+  FaTimes,
+} from "react-icons/fa";
 
 interface IFormatHeader {
   children?: React.ReactNode;
   colorTheme?: string;
+  paperNumber: number;
+  paperCheck: boolean;
+  fileEdit: boolean;
+  craditOnPaper: boolean;
 }
 
-const FormatHeader: React.FC<IFormatHeader> = ({ children, colorTheme }) => {
+const FormatHeader: React.FC<IFormatHeader> = ({
+  children,
+  colorTheme,
+  paperNumber,
+  paperCheck,
+  fileEdit,
+  craditOnPaper,
+}) => {
   colorTheme = colorTheme ?? "bg-gray-500";
 
   const iconName = (
@@ -39,29 +58,58 @@ const FormatHeader: React.FC<IFormatHeader> = ({ children, colorTheme }) => {
       </div>
       <div className=" py-1  ">
         {iconName(
-          "120 หน้า",
+          `${paperNumber} หน้า`,
           "รวมปกหน้าหลัง",
           <FaBook color="#FFFFFF" size={27} />,
           "bg-green-400"
         )}
 
         {iconName(
-          "มีเฉลย",
-          "เฉลยส่งพร้อมกับไฟล์ใบงาน",
-          <FaCheck color="#FFFFFF" size={27} />,
+          `${paperCheck == false ? "ไม่" : ""}มีเฉลย`,
+          `${
+            paperCheck == false
+              ? "ไม่มีเฉลยสำหรับงานนี้"
+              : "เฉลยส่งพร้อมกับไฟล์ชิ้นงาน"
+          }`,
+          paperCheck == false ? (
+            <>
+              <FaTimes color="#FFFFFF" size={27} />
+            </>
+          ) : (
+            <>
+              <FaCheck color="#FFFFFF" size={27} />
+            </>
+          ),
           "  bg-indigo-400"
         )}
 
-        {iconName(
-          "ไฟล์ PDF แก้ไขไม่ได้",
-          "File Locked จากผู้พัฒนา",
-          <FaLock color="#FFFFFF" size={27} />,
-          "bg-pink-400"
+        {fileEdit == true ? (
+          <>
+            {iconName(
+              "ไฟล์ PDF แก้ไขไม่ได้",
+              "File Locked จากผู้พัฒนา",
+              <FaLock color="#FFFFFF" size={27} />,
+              "bg-red-400"
+            )}
+          </>
+        ) : (
+          <>
+            {iconName(
+              "ไฟล์ PDF แก้ไขได้",
+              "สามารถแก้ไขไฟล์ได้",
+              <FaUnlock color="#FFFFFF" size={27} />,
+              "bg-pink-400"
+            )}
+          </>
         )}
 
         {iconName(
-          "มีเครดิต",
-          "เครดิตเพจติดทุกหน้า",
+          `${craditOnPaper == false ? "ไม่มี" : "มี"}เครดิต`,
+          `${
+            craditOnPaper == false
+              ? "ไม่มีเครดิตเพจติดทุกหน้า"
+              : "เครดิตเพจติดทุกหน้า"
+          }`,
           <>
             <img src="../iconLogo.svg" alt="" className="w-6 h-6" />
           </>,

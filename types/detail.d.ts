@@ -15,10 +15,20 @@ interface IDetailMock {
     category: any[]
     content: string[]
     examGroup: IExamGroup[]
-    file: number
-    print: number
+    file?: number
+    print?: number
     title: string
     titleDetail: string
+
+    paperNumber:number
+    paperCheck:boolean
+    pdfEdit:boolean
+    craditOnPaper:boolean
+    freeMode:boolean
+    downLoadFile?:boolean
+
+    scrollAuto:boolean
+
     imageHaderFront: string
     imageHaderFrontWindows?: string
     imageHaderEnd: string

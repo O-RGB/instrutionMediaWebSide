@@ -70,10 +70,10 @@ const Home: NextPage = () => {
               <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
                 <CategoryHeader tag={['Detail.category']}></CategoryHeader>
                 <DetailHeader colorTheme={color}></DetailHeader>
-                <ContentHeader
+                {/* <ContentHeader
                   colorTheme={color}
                   contect={['Detail.content']}
-                ></ContentHeader>
+                ></ContentHeader> */}
                 <div className="pb-2">
                   <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
                     ตัวอย่าง
