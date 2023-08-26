@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from "next";
-import { useRouter } from "next/router";
 import { createRef, useEffect, useState } from "react";
 import CardBackground from "../../components/CardBackground";
 import CategoryHeader from "../../components/Detail/CategoryHeader";
@@ -9,12 +8,13 @@ import Exmple from "../../components/Detail/Exmple";
 import Display from "../../components/Display";
 import Header from "../../components/Header";
 import HeaderPreview from "../../components/HeaderPreview";
-import { DetailModel } from "../../model/Detail";
 import { DetailMock } from "../../mock/Detail";
 import React from "react";
 import NextHead from "../../components/NextHead";
 import FormatHeader from "../../components/Detail/FormatHeader";
 import FreeHeader from "../../components/Detail/FreeHeader";
+import Footer from "../../components/Footer/Footer";
+import { getMockModel } from "../../mock/initData";
 
 const Detail: NextPage = ({ props, preview }: any) => {
   const DetailMockState: IDetailMock | undefined = props;
@@ -143,11 +143,7 @@ const Detail: NextPage = ({ props, preview }: any) => {
                 </div>
               </CardBackground>
             </Display>
-            <div className="flex flex-wrap justify-start sm:justify-center  gap-2 sm:gap-4 text-center  w-full h-auto bg-gray-600 p-4 text-white text-xs">
-              <div>เว็บไซต์ สื่อการสอน Worksheets</div>
-              <div>Email :learningworksheets@gmail.com</div>
-              <div>Facebook Page : สื่อการสอน Worksheets</div>
-            </div>
+            <Footer></Footer>
           </div>
         </>
       )}
@@ -161,7 +157,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   let idTemp = context.params.id;
   let preview = context.query?.mode;
   idTemp = (idTemp as string).split("?")[0];
-  var data = DetailMock!.find((e) => e.url == idTemp);
+  var data = getMockModel()!.find((e) => e.url == idTemp);
   if (data == null) {
     data = undefined;
   }

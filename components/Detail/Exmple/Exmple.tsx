@@ -1,4 +1,5 @@
 import React from "react";
+import OImgae from "../../image/OImage";
 
 /* eslint-disable @next/next/no-img-element */
 interface IExmple {
@@ -19,7 +20,7 @@ const Exmple: React.FC<IExmple> = ({
   colorTheme = colorTheme ?? "bg-gray-500";
   return (
     <>
-      <div className="py-1 sticky top-14 -mx-3 sm:-mx-0 h-full bg-white  border-b">
+      <div className="py-1 sticky top-14 -mx-3 sm:-mx-0 h-full bg-white border-b z-20">
         <div className="flex gap-2 py-1  ">
           <div className={`flex ${colorTheme} w-9 h-9  rounded-md mt-1`}>
             <div className="m-auto text-white text-1xl font-bold ">
@@ -35,15 +36,20 @@ const Exmple: React.FC<IExmple> = ({
         </div>
       </div>
       {/* <hr /> */}
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-4 m-auto py-4 -mx-3 sm:-mx-0">
+      <div className="grid sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-4 m-auto py-4 -mx-3 sm:-mx-0">
         {imagePathList.map((e, i) => {
           return (
             <React.Fragment key={`image-ex-${i}`}>
-              <img
+              <OImgae
+                url={`../${e}`}
+                imageClassName="imgPrint"
+                relativeClass="w-full sm:w-auto m-auto h-auto bg-black pointer-events-none"
+              ></OImgae>
+              {/* <img
                 src={`../${e}`}
                 alt=""
                 className="imgPrint w-full sm:w-auto m-auto h-auto bg-black   pointer-events-none"
-              />
+              /> */}
             </React.Fragment>
           );
         })}

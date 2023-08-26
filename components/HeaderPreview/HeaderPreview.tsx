@@ -1,4 +1,6 @@
 import React from "react";
+import { Parallax } from "react-scroll-parallax";
+import Book from "../book/book";
 
 /* eslint-disable @next/next/no-img-element */
 interface IHeaderPreview {
@@ -18,46 +20,42 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
 }) => {
   return (
     <>
-      <div className={`relative  ${color} w-full overflow-hidden`}>
-        <div className="flex max-w-7xl m-auto z-20">
-          <div className="flex m-auto w-full h-96 px-5 sm:px-16">
-            <div className="grid gap-3 sm:gap-10  m-auto text-white lg:grid-cols-12 ">
-              <div className="col-span-6 m-auto ">
-                <div className="w-full flex gap-4  ">
-                  <img
-                    src={`../${imagePath}`}
-                    alt=""
-                    className="z-20 w-auto h-32 sm:h-40 md:h-40 lg:h-56 object-contain rounded-md shadow-md"
-                  />
-                  <img
-                    src={`../${imagePathBlack}`}
-                    alt=""
-                    className="z-20 w-auto  h-32 sm:h-40 md:h-40 lg:h-56 object-contain rounded-md shadow-md"
-                  />
-                </div>
+      <div className={`relative  ${color} w-full overflow-hidden select-none`}>
+        <div className="flex  justify-center items-center w-full h-96  px-3 sm:px-10 ">
+          <div className="flex gap-12 flex-col lg:flex-row w-full justify-center items-center max-w-4xl">
+            <div className="w-full h-full">
+              <div className="flex w-full h-full gap-4 justify-center items-center">
+                <Book imagePath={`../${imagePath}`}></Book>
+                <Book imagePath={`../${imagePathBlack}`}></Book>
               </div>
-              <div className="col-span-6 text-lg flex m-auto">
-                <div className=" text-center sm:text-left">
-                  <div className="text-2xl font-bold z-20">{title}</div>
-                  <div className="text-base z-20 py-2">
-                   {titleDetail}
-                  </div>
-                </div>
+            </div>
+            <div className="text-white">
+              <div className=" text-center sm:text-left">
+                <div className="text-2xl font-bold z-20">{title}</div>
+                <div className="text-base z-20 py-2">{titleDetail}</div>
               </div>
             </div>
           </div>
         </div>
-        
+
         <div className="absolute -bottom-20 -right-10 z-0">
-          <img src="../eff.svg" alt="" className="w-auto h-60 opacity-10 z-0" />
+          <Parallax speed={-10}>
+            <img
+              src="../eff.svg"
+              alt=""
+              className="w-auto h-60 opacity-10 z-0"
+            />
+          </Parallax>
         </div>
 
-        <div className="absolute w-full -top-20 -left-40 z-0">
-          <img
-            src="../eff.svg"
-            alt=""
-            className="w-auto h-60  opacity-10 rotate-180 z-0"
-          />
+        <div className="absolute w-full -top-32 -left-40 z-0">
+          <Parallax speed={-10}>
+            <img
+              src="../eff.svg"
+              alt=""
+              className="w-auto h-60  opacity-10 rotate-180 z-0"
+            />
+          </Parallax>
         </div>
       </div>
     </>
