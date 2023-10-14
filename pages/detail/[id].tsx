@@ -65,7 +65,9 @@ const Detail: NextPage = ({ get }: any) => {
           ></HeaderPreview>
           <Display>
             <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
-              <CategoryHeader tag={[]}></CategoryHeader>
+              <CategoryHeader
+                tag={ItemWork.categoryList.map((x) => x.name)}
+              ></CategoryHeader>
               <DetailHeader
                 file={ItemWork.price.file}
                 print={ItemWork.price.print}
@@ -99,7 +101,7 @@ const Detail: NextPage = ({ get }: any) => {
                 scrollToDisable={true}
                 arrRef={arrRef}
                 colorTheme={color}
-                contect={ItemWork.content.map((x) => x.image)}
+                contect={ItemWork.content.map((x) => x.name)}
               ></ContentHeader>
               <div className="pb-2">
                 <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
@@ -107,8 +109,8 @@ const Detail: NextPage = ({ get }: any) => {
                 </div>
               </div>
 
-              {/* <>
-                {(DetailMockState as IDetailMock).examGroup.map((e, i) => {
+              <>
+                {ItemWork.content.map((e, i) => {
                   arrRef.push(createRef());
                   return (
                     <>
@@ -118,15 +120,15 @@ const Detail: NextPage = ({ get }: any) => {
                             colorTheme={color}
                             number={`${i + 1}`}
                             content={e.name}
-                            contentDetail={e.pageNumber}
-                            imagePathList={e.imagePath}
+                            contentDetail={`เริ่มตั้งแต่ หน้า ${e.pageStart} - ถึง ${e.pageEnd}`}
+                            imagePathList={e.url}
                           ></Exmple>
                         </div>
                       </React.Fragment>
                     </>
                   );
                 })}
-              </> */}
+              </>
 
               <div className="h-auto">
                 <div className=""></div>

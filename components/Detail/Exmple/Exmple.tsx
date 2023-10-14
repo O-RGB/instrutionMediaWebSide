@@ -3,7 +3,7 @@ import OImgae from "../../image/OImage";
 
 /* eslint-disable @next/next/no-img-element */
 interface IExmple {
-  imagePathList: any[];
+  imagePathList: string;
   colorTheme?: string;
   content: string;
   contentDetail: string;
@@ -36,23 +36,12 @@ const Exmple: React.FC<IExmple> = ({
         </div>
       </div>
       {/* <hr /> */}
-      <div className="grid sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-4 m-auto py-4 -mx-3 sm:-mx-0">
-        {imagePathList.map((e, i) => {
-          return (
-            <React.Fragment key={`image-ex-${i}`}>
-              <OImgae
-                url={`../${e}`}
-                imageClassName="imgPrint"
-                relativeClass="w-full sm:w-auto m-auto h-auto bg-black pointer-events-none"
-              ></OImgae>
-              {/* <img
-                src={`../${e}`}
-                alt=""
-                className="imgPrint w-full sm:w-auto m-auto h-auto bg-black   pointer-events-none"
-              /> */}
-            </React.Fragment>
-          );
-        })}
+      <div className="flex w-full gh-full sm:gap-4 m-auto py-4 -mx-3 sm:-mx-0">
+        <OImgae
+          url={imagePathList}
+          imageClassName="imgPrint"
+          relativeClass="w-full h-full bg-black pointer-events-none"
+        ></OImgae>
       </div>
     </>
   );
