@@ -15,138 +15,127 @@ import FormatHeader from "../../components/Detail/FormatHeader";
 import FreeHeader from "../../components/Detail/FreeHeader";
 import Footer from "../../components/Footer/Footer";
 import { getMockModel } from "../../mock/initData";
+import { getFile } from "../../api/fetch/fetcher/getFile";
 
-const Detail: NextPage = ({ props, preview }: any) => {
-  const DetailMockState: IDetailMock | undefined = props;
-  const previewMode = preview;
+const Detail: NextPage = ({ get }: any) => {
+  // const DetailMockState: IDetailMock | undefined = props;
+  // const previewMode = preview;
+  const ItemWork: ItemWork = get;
   const color = "bg-gray-400";
   var arrRef: any[] = [];
 
+  useEffect(() => {
+    console.log(get);
+  }, [get]);
+
+  if (!ItemWork) {
+    return <></>;
+  }
+
   return (
     <>
-      {DetailMockState != null && (
-        <>
-          <NextHead
-            title={(DetailMockState as IDetailMock).title}
-            description={(DetailMockState as IDetailMock).titleDetail}
-            image={`https://instrutionmediadetail.vercel.app/${
-              previewMode == "mobile"
-                ? (DetailMockState as IDetailMock).imagePreview
-                : previewMode == "windows"
-                ? (DetailMockState as IDetailMock).imageHaderFrontWindows
-                : (DetailMockState as IDetailMock).imagePreview
-            }`}
-            url={`https://instrutionmediadetail.vercel.app/detail/${
-              (DetailMockState as IDetailMock).url
-            }${previewMode == "windows" ? "?mode=windows" : ""}`}
-          ></NextHead>
+      {/* <NextHead
+        title={ItemWork.name}
+        description={ItemWork.detail}
+        image={ItemWork.frontUrl}
+        url={`https://instrutionmediadetail.vercel.app/detail/${ItemWork.id}`}
+      ></NextHead>
+      <div>
+        <br />
+        {JSON.stringify(ItemWork)}
+      </div> */}
 
-          <Header></Header>
-          <div className="bg-gray-100">
-            {/* <img src="imagetest.png" alt="" className=" w-full h-96 object-cover" /> */}
-            <HeaderPreview
-              imagePath={(DetailMockState as IDetailMock).imageHaderFront}
-              imagePathBlack={(DetailMockState as IDetailMock).imageHaderEnd}
-              title={
-                DetailMockState != undefined
-                  ? (DetailMockState as IDetailMock).title
-                  : ""
-              }
-              titleDetail={
-                DetailMockState != undefined
-                  ? (DetailMockState as IDetailMock).titleDetail
-                  : ""
-              }
-              color={
-                DetailMockState != undefined
-                  ? (DetailMockState as IDetailMock).color
-                  : "bg-purple-600"
-              }
-            ></HeaderPreview>
-            <Display>
-              <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
-                <CategoryHeader
-                  tag={
-                    DetailMockState != undefined
-                      ? (DetailMockState as IDetailMock).category
-                      : []
-                  }
-                ></CategoryHeader>
-                <DetailHeader
-                  file={(DetailMockState as IDetailMock).file}
-                  print={(DetailMockState as IDetailMock).print}
-                  colorTheme={color}
-                ></DetailHeader>
-                <FormatHeader
-                  colorTheme={color}
-                  paperNumber={(DetailMockState as IDetailMock).paperNumber}
-                  paperCheck={(DetailMockState as IDetailMock).paperCheck}
-                  fileEdit={(DetailMockState as IDetailMock).pdfEdit}
-                  craditOnPaper={(DetailMockState as IDetailMock).craditOnPaper}
-                ></FormatHeader>
-                {DetailMockState != undefined ? (
-                  (DetailMockState as IDetailMock).freeMode == true ? (
-                    <>
-                      <FreeHeader
-                        downLoadFile={
-                          (DetailMockState as IDetailMock).downLoadFile ?? false
-                        }
-                        colorTheme={color}
-                      ></FreeHeader>
-                    </>
-                  ) : (
-                    <></>
-                  )
+      <>
+        <NextHead
+          title={ItemWork.name}
+          description={ItemWork.detail}
+          image={ItemWork.frontUrl}
+          url={`https://instrutionmediadetail.vercel.app/detail/${ItemWork.id}`}
+        ></NextHead>
+
+        <Header></Header>
+        <div className="bg-gray-100">
+          {/* <img src="imagetest.png" alt="" className=" w-full h-96 object-cover" /> */}
+          <HeaderPreview
+            imagePath={ItemWork.frontUrl}
+            imagePathBlack={ItemWork.blackUrl}
+            title={ItemWork.name}
+            titleDetail={ItemWork.detail}
+            color={ItemWork.color}
+          ></HeaderPreview>
+          <Display>
+            <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
+              <CategoryHeader tag={[]}></CategoryHeader>
+              <DetailHeader
+                file={ItemWork.price.file}
+                print={ItemWork.price.print}
+                colorTheme={color}
+              ></DetailHeader>
+              <FormatHeader
+                colorTheme={color}
+                paperNumber={ItemWork.price.paper}
+                paperCheck={ItemWork.isAnswer}
+                fileEdit={false}
+                craditOnPaper={true}
+              ></FormatHeader>
+              {/* {DetailMockState != undefined ? (
+                (DetailMockState as IDetailMock).freeMode == true ? (
+                  <>
+                    <FreeHeader
+                      downLoadFile={
+                        (DetailMockState as IDetailMock).downLoadFile ?? false
+                      }
+                      colorTheme={color}
+                    ></FreeHeader>
+                  </>
                 ) : (
                   <></>
-                )}
+                )
+              ) : (
+                <></>
+              )} */}
 
-                <ContentHeader
-                  scrollToDisable={(DetailMockState as IDetailMock).scrollAuto}
-                  arrRef={arrRef}
-                  colorTheme={color}
-                  contect={
-                    DetailMockState != undefined
-                      ? (DetailMockState as IDetailMock).content
-                      : []
-                  }
-                ></ContentHeader>
-                <div className="pb-2">
-                  <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
-                    ตัวอย่าง
-                  </div>
+              <ContentHeader
+                scrollToDisable={true}
+                arrRef={arrRef}
+                colorTheme={color}
+                contect={ItemWork.content.map((x) => x.image)}
+              ></ContentHeader>
+              <div className="pb-2">
+                <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
+                  ตัวอย่าง
                 </div>
+              </div>
 
-                <>
-                  {(DetailMockState as IDetailMock).examGroup.map((e, i) => {
-                    arrRef.push(createRef());
-                    return (
-                      <>
-                        <React.Fragment key={`exam_g_${i}`}>
-                          <div ref={arrRef[i]}>
-                            <Exmple
-                              colorTheme={color}
-                              number={`${i + 1}`}
-                              content={e.name}
-                              contentDetail={e.pageNumber}
-                              imagePathList={e.imagePath}
-                            ></Exmple>
-                          </div>
-                        </React.Fragment>
-                      </>
-                    );
-                  })}
-                </>
+              {/* <>
+                {(DetailMockState as IDetailMock).examGroup.map((e, i) => {
+                  arrRef.push(createRef());
+                  return (
+                    <>
+                      <React.Fragment key={`exam_g_${i}`}>
+                        <div ref={arrRef[i]}>
+                          <Exmple
+                            colorTheme={color}
+                            number={`${i + 1}`}
+                            content={e.name}
+                            contentDetail={e.pageNumber}
+                            imagePathList={e.imagePath}
+                          ></Exmple>
+                        </div>
+                      </React.Fragment>
+                    </>
+                  );
+                })}
+              </> */}
 
-                <div className="h-auto">
-                  <div className=""></div>
-                </div>
-              </CardBackground>
-            </Display>
-            <Footer></Footer>
-          </div>
-        </>
-      )}
+              <div className="h-auto">
+                <div className=""></div>
+              </div>
+            </CardBackground>
+          </Display>
+          <Footer></Footer>
+        </div>
+      </>
     </>
   );
 };
@@ -154,79 +143,13 @@ const Detail: NextPage = ({ props, preview }: any) => {
 export default Detail;
 
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  let idTemp = context.params.id;
-  let preview = context.query?.mode;
-  idTemp = (idTemp as string).split("?")[0];
-  var data = getMockModel()!.find((e) => e.url == idTemp);
-  if (data == null) {
-    data = undefined;
-  }
-  if (preview == null) {
-    preview = "mobile";
-  }
+  // let idTemp = context.params.id;
 
-  return { props: { props: data, preview: preview } };
+  // idTemp = (idTemp as string).split("?")[0];
+
+  console.log(context.params.id);
+
+  let test = await getFile(`?mode=string&id=${context.params.id}`);
+
+  return { props: { get: test } };
 };
-
-<div className="grid grid-cols-12 gap-3 ">
-  <div className="hidden lg:col-span-2 lg:block">
-    <div className=" sticky top-16 overflow-scroll">
-      <CardBackground
-        padding="p-0 py-0"
-        rounded="rounded-b-md"
-        titleHerder="ใบงานแนะนำ"
-      >
-        <div className="w-full h-screen   ">
-          {/* <img src="imageExTest.png" alt="" className="w-full h-auto"/> */}
-        </div>
-      </CardBackground>
-    </div>
-  </div>
-  <div className="col-span-12 lg:col-span-10">
-    <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
-      {/* <h1>{previewMode}</h1> */}
-      {/* <CategoryHeader
-        tag={
-          DetailMockState != undefined
-            ? (DetailMockState as IDetailMock).category
-            : []
-        }
-      ></CategoryHeader> */}
-      {/* <DetailHeader colorTheme={color}></DetailHeader> */}
-      {/* <ContentHeader
-        colorTheme={color}
-        contect={
-          DetailMockState != undefined
-            ? (DetailMockState as IDetailMock).content
-            : []
-        }
-      ></ContentHeader> */}
-      <div className="pb-2">
-        <div className="font-bold bg-gray-100 p-3 -mx-6  text-gray-500  shadow-sm">
-          ตัวอย่าง
-        </div>
-      </div>
-
-      {/* <>
-        {(DetailMockState as IDetailMock).examGroup.map((e, i) => (
-          <React.Fragment key={`exam_g_${i}`}>
-            <Exmple
-              colorTheme={color}
-              number={`${i + 1}`}
-              content={e.name}
-              contentDetail="ตั้งแต่หน้า 1 - 50"
-              imagePathList={e.imagePath}
-            ></Exmple>
-          </React.Fragment>
-        ))}
-      </> */}
-
-      <div className="font-bold bg-gray-200 p-3 -mx-6 rounded-xl text-gray-500  shadow-sm">
-        ใบงานที่เกี่ยวข้อง
-      </div>
-      <div className="h-auto">
-        <div className=""></div>
-      </div>
-    </CardBackground>
-  </div>
-</div>;

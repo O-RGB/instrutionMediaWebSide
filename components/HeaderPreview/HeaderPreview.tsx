@@ -20,13 +20,16 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
 }) => {
   return (
     <>
-      <div className={`relative  ${color} w-full overflow-hidden select-none`}>
+      <div
+        style={{ backgroundColor: color }}
+        className={`relative    w-full overflow-hidden select-none`}
+      >
         <div className="flex  justify-center items-center w-full h-96  px-3 sm:px-10 ">
           <div className="flex gap-12 flex-col lg:flex-row w-full justify-center items-center max-w-4xl">
             <div className="w-full h-full">
               <div className="flex w-full h-full gap-4 justify-center items-center">
-                <Book imagePath={`../${imagePath}`}></Book>
-                <Book imagePath={`../${imagePathBlack}`}></Book>
+                <Book imagePath={`${imagePath}`}></Book>
+                <Book imagePath={`${imagePathBlack}`}></Book>
               </div>
             </div>
             <div className="text-white">
