@@ -6,6 +6,7 @@ interface BookProps {
   width?: string;
   height?: string;
   objectType?: string;
+  load?: boolean;
 }
 
 const Book: React.FC<BookProps> = ({
@@ -13,9 +14,11 @@ const Book: React.FC<BookProps> = ({
   width = "w-20 sm:w-28 lg:w-40",
   height = "h-28 sm:h-40 md:h-40 lg:h-56",
   objectType = "object-contain",
+  load,
 }) => {
   return (
     <OImgae
+      load={load}
       url={imagePath}
       objectType={objectType}
       imageClassName={height}

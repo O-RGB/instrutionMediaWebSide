@@ -2,6 +2,8 @@ import React from "react";
 import { Parallax } from "react-scroll-parallax";
 import Book from "../book/book";
 import Skeleton from "react-loading-skeleton";
+import { AiFillFilePdf, AiTwotonePrinter } from "react-icons/ai";
+import { RiBookFill } from "react-icons/ri";
 
 /* eslint-disable @next/next/no-img-element */
 interface IHeaderPreview {
@@ -11,6 +13,9 @@ interface IHeaderPreview {
   titleDetail: string;
   color: string;
   loadingMode?: boolean;
+  file?: number;
+  print?: number;
+  book?: number;
 }
 
 const HeaderPreview: React.FC<IHeaderPreview> = ({
@@ -20,17 +25,20 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
   titleDetail,
   color,
   loadingMode = false,
+  file,
+  print,
+  book,
 }) => {
   return (
     <>
       <div
-        style={{ backgroundColor: color }}
-        className={`relative    w-full overflow-hidden select-none`}
+        style={{ backgroundColor: color ?? "#FFFFFF" }}
+        className={`relative w-full overflow-hidden select-none`}
       >
         <div className="flex  justify-center items-center w-full h-96  px-3 sm:px-10 ">
           <div className="flex gap-12 flex-col lg:flex-row w-full justify-center items-center max-w-4xl">
             <div className="w-full h-full">
-              <div className="flex w-full h-full gap-4 justify-center items-center">
+              <div className="flex w-full h-full gap-4 justify-center items-center relative">
                 <Book imagePath={`${imagePath}`}></Book>
                 {imagePathBlack && (
                   <Book imagePath={`${imagePathBlack}`}></Book>
@@ -74,7 +82,29 @@ const HeaderPreview: React.FC<IHeaderPreview> = ({
                       </div>
                     </div>
                   ) : (
-                    titleDetail
+                    <div className="flex flex-col gap-2">
+                      <div>{titleDetail}</div>
+                      <div className="flex gap-2 justify-center sm:justify-start">
+                        {file && (
+                          <div className="text-sm py-1.5 px-1.5 w-fit rounded-md bg-red-600 border border-white  text-white flex justify-center items-center gap-0.5">
+                            <AiFillFilePdf></AiFillFilePdf>
+                            {file}฿
+                          </div>
+                        )}
+                        {print && (
+                          <div className="text-sm py-1.5 px-1.5 w-fit rounded-md bg-orange-600 border border-white  text-white flex justify-center items-center gap-0.5">
+                            <AiTwotonePrinter></AiTwotonePrinter>
+                            {print}฿
+                          </div>
+                        )}
+                        {book && (
+                          <div className="text-sm py-1.5 px-1.5 w-fit rounded-md bg-blue-600 border border-white  text-white flex justify-center items-center gap-0.5">
+                            <RiBookFill></RiBookFill>
+                            {book}฿
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>

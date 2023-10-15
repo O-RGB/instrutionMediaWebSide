@@ -16,6 +16,9 @@ import Router from "next/router";
 import SwiperCustom from "../components/swiper";
 import { SwiperSlide } from "swiper/react";
 import { getItemPreview } from "../api/fetch/fetcher/itemPreview";
+import Link from "next/link";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 const Home: NextPage = () => {
   const getItemPreviewlist = async () => {
     let getItem = await getItemPreview(`?mode=preview`);
@@ -25,6 +28,8 @@ const Home: NextPage = () => {
   const [itemPreview, setItemPreview] = useState<ItemPreview[] | undefined>(
     undefined
   );
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getItemPreviewlist().then((data) => {
@@ -36,6 +41,16 @@ const Home: NextPage = () => {
 
   return (
     <>
+      {loading && (
+        <>
+          <div className="fixed w-full h-full bg-black bg-opacity-25 flex justify-center items-center z-[99]">
+            <div className=" w-20 h-20 bg-white rounded-md flex justify-center items-center flex-col gap-2">
+              <AiOutlineLoading3Quarters className="animate-spin text-3xl text-gray-400"></AiOutlineLoading3Quarters>
+              <div className="text-xs">กำลังโหลด</div>
+            </div>
+          </div>
+        </>
+      )}
       <Header></Header>
       <div className="bg-gray-100">
         {/* <img src="imagetest.png" alt="" className=" w-full h-96 object-cover" /> */}
@@ -50,6 +65,9 @@ const Home: NextPage = () => {
                     title={data.name}
                     titleDetail={data.detail}
                     color={data.color ?? ""}
+                    file={data.file}
+                    book={data.book}
+                    print={data.print}
                   ></HeaderPreview>
                 </SwiperSlide>
               );
@@ -69,22 +87,70 @@ const Home: NextPage = () => {
         </SwiperCustom>
         <Display>
           <CardBackground rounded="rounded-b-md" titleHerder="ใบงานแนะนำ">
-            <div className="grid gap-5 grid-cols-2 sm:grid-rows-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center items-center">
+            <div className="grid gap-5 grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center items-center">
               {itemPreview?.map((data, index) => {
-                if (data.frontUrl && data.color && data.detail && data.name)
+                if (
+                  data.frontUrl &&
+                  data.color &&
+                  data.detail &&
+                  data.name &&
+                  data.id
+                )
                   return (
-                    <BookTitle
-                      onClick={() => Router.push(`/detail/${data.id}`)}
-                      key={`${data.id}-key-url-${index}`}
-                      imagePath={data.frontUrl ?? ""}
-                      title={data.name}
-                      detail={data.detail}
-                    ></BookTitle>
+                    <Link
+                      onClick={() => {
+                        setLoading(true);
+                      }}
+                      href={`/detail/${data.id.toLocaleLowerCase()}`}
+                    >
+                      <BookTitle
+                        // onClick={() => {
+                        //   Router.push(`/detail/${data.id}`);
+                        // }}
+                        key={`${data.id}-key-url-${index}`}
+                        imagePath={data.frontUrl ?? ""}
+                        title={data.name}
+                        detail={data.detail}
+                        file={data.file}
+                        book={data.book}
+                        print={data.print}
+                      ></BookTitle>
+                    </Link>
                   );
               })}
+
+              {!itemPreview && (
+                <>
+                  <BookTitle
+                    load
+                    title={"data.name"}
+                    detail={"data.detail"}
+                  ></BookTitle>
+                  <BookTitle
+                    load
+                    title={"data.name"}
+                    detail={"data.detail"}
+                  ></BookTitle>
+                  <BookTitle
+                    load
+                    title={"data.name"}
+                    detail={"data.detail"}
+                  ></BookTitle>
+                  <BookTitle
+                    load
+                    title={"data.name"}
+                    detail={"data.detail"}
+                  ></BookTitle>
+                  <BookTitle
+                    load
+                    title={"data.name"}
+                    detail={"data.detail"}
+                  ></BookTitle>
+                </>
+              )}
             </div>
           </CardBackground>
-          <div className="min-h-[500px]"></div>
+          {/* <div className="min-h-[500px]"></div> */}
         </Display>
         <Footer></Footer>
       </div>

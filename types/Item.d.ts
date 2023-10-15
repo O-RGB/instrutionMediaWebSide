@@ -59,6 +59,10 @@ interface ItemPreview {
   detail: string;
   frontUrl?: string;
   color?: string;
+  paper: number;
+  print: number;
+  book: number;
+  file: number;
 }
 
 interface ItemPreviewList {

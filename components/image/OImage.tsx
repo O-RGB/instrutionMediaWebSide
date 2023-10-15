@@ -52,16 +52,19 @@ const OImgae: React.FC<OImgaeProps> = ({
 
   return (
     <div className={`relative overflow-hidden w-full h-full  ${relativeClass}`}>
-      <div
-        // hidden={isImageReadyHidden || isImageNotFound}
-        className={`absolute top-0 left-0 w-full h-full z-30 ${imageClip} aspect-[4/3]    ${relativeClass} ${
-          isImageReady ? "opacity-0 " : " "
-        } duration-1000`}
-      >
-        <Skeleton
-          baseColor="#e3e3e3"
-          className="w-full h-full opacity-100 scale-110"
-        ></Skeleton>
+      <div>
+        {load && <div className="w-40"></div>}
+        <div
+          // hidden={isImageReadyHidden || isImageNotFound}
+          className={`absolute top-0 left-0 w-full h-full z-30 ${imageClip} aspect-[4/3]    ${relativeClass} ${
+            isImageReady ? "opacity-0 " : " "
+          } duration-1000`}
+        >
+          <Skeleton
+            baseColor="#e3e3e3"
+            className="w-full h-full opacity-100 scale-110"
+          ></Skeleton>
+        </div>
       </div>
       <div
         // hidden={!isImageNotFound && url != ""}
@@ -71,7 +74,6 @@ const OImgae: React.FC<OImgaeProps> = ({
       >
         Image Not Found
       </div>
-
       <div className={`${imageClassName} z-10 `}>
         {url && url != "" ? (
           <Image
@@ -86,7 +88,7 @@ const OImgae: React.FC<OImgaeProps> = ({
               // setnaturalWidth(String(e.currentTarget.width));
               // setnaturalHeight(String(e.currentTarget.height));
             }}
-            onLoadingComplete={onLoadCallBack}
+            onLoadingComplete={!load ? onLoadCallBack : undefined}
             src={url}
             style={{
               width: "100%",
