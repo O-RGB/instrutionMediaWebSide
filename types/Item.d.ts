@@ -52,3 +52,15 @@ interface ItemWork {
   categoryList: Category[];
   content: Content[];
 }
+
+interface ItemPreview {
+  id: string;
+  name: string;
+  detail: string;
+  frontUrl?: string;
+  color?: string;
+}
+
+interface ItemPreviewList {
+  item: ItemPreview[];
+}
