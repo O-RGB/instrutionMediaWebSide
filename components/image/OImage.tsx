@@ -56,7 +56,7 @@ const OImgae: React.FC<OImgaeProps> = ({
         {load && <div className="w-40"></div>}
         <div
           // hidden={isImageReadyHidden || isImageNotFound}
-          className={`absolute top-0 left-0 w-full h-full z-30 ${imageClip} aspect-[4/3]    ${relativeClass} ${
+          className={`absolute top-0 left-0 w-full h-full z-30 ${imageClip} aspect-[4/3] ${relativeClass} ${
             isImageReady ? "opacity-0 " : " "
           } duration-1000`}
         >
@@ -97,9 +97,9 @@ const OImgae: React.FC<OImgaeProps> = ({
             width={Number(naturalWidth)}
             height={Number(naturalHeight)}
             sizes="100vw"
-            className={`${objectType ? objectType : "object-cover"} opacity-0 ${
-              isImageReady ? "opacity-100" : ""
-            } duration-1000`}
+            className={`${
+              objectType ? objectType : "object-cover"
+            } opacity-0   ${isImageReady ? "opacity-100" : ""} duration-1000`}
             alt={""}
           />
         ) : (
