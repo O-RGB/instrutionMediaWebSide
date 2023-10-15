@@ -19,12 +19,7 @@ interface SwiperCustomProps extends SwiperProps {
 
 const SwiperCustom: React.FC<SwiperCustomProps> = ({ children, ...props }) => {
   return (
-    <Swiper
-      spaceBetween={0}
-      slidesPerView={1}
-      navigation
-      {...props}
-    >
+    <Swiper navigation {...props}>
       {children}
     </Swiper>
   );

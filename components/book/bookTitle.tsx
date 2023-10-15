@@ -68,25 +68,27 @@ const BookTitle: React.FC<BookTitleProps> = ({
               </div>
             ) : (
               <div>
-                <div className="text-right flex justify-end gap-2 py-1">
-                  {file && (
-                    <div className="text-xs py-0.5 px-1 w-fit rounded-md bg-red-600 text-white flex justify-center items-center gap-0.5">
-                      <AiFillFilePdf></AiFillFilePdf>
-                      {file}฿
-                    </div>
-                  )}
-                  {print && (
-                    <div className="text-xs py-0.5 px-1 w-fit rounded-md bg-orange-600 text-white flex justify-center items-center gap-0.5">
-                      <AiTwotonePrinter></AiTwotonePrinter>
-                      {print}฿
-                    </div>
-                  )}
-                  {book && (
-                    <div className="text-xs py-0.5 px-1 w-fit rounded-md bg-blue-600 text-white flex justify-center items-center gap-0.5">
-                      <RiBookFill></RiBookFill>
-                      {book}฿
-                    </div>
-                  )}
+                <div className="">
+                  <div className="text-right flex flex-row justify-end gap-2 py-1 ">
+                    {file && (
+                      <div className="text-xs py-0.5 px-1 w-fit rounded-md bg-red-600 text-white flex justify-center items-center gap-0.5">
+                        <AiFillFilePdf></AiFillFilePdf>
+                        {file}฿
+                      </div>
+                    )}
+                    {print && (
+                      <div className="text-xs py-0.5 px-1 w-fit rounded-md bg-orange-600 text-white flex justify-center items-center gap-0.5">
+                        <AiTwotonePrinter></AiTwotonePrinter>
+                        {print}฿
+                      </div>
+                    )}
+                    {book && (
+                      <div className="text-xs py-0.5 px-1 w-fit rounded-md bg-blue-600 text-white flex justify-center items-center gap-0.5">
+                        <RiBookFill></RiBookFill>
+                        {book}฿
+                      </div>
+                    )}
+                  </div>
                 </div>
                 {detail}
               </div>

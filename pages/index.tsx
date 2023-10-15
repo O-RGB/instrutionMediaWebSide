@@ -87,7 +87,7 @@ const Home: NextPage = () => {
         </SwiperCustom>
         <Display>
           <CardBackground rounded="rounded-b-md" titleHerder="ใบงานแนะนำ">
-            <div className="grid gap-5 grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center items-center">
+            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center items-center divide-y">
               {itemPreview?.map((data, index) => {
                 if (
                   data.frontUrl &&
@@ -104,9 +104,6 @@ const Home: NextPage = () => {
                       href={`/detail/${data.id.toLocaleLowerCase()}`}
                     >
                       <BookTitle
-                        // onClick={() => {
-                        //   Router.push(`/detail/${data.id}`);
-                        // }}
                         key={`${data.id}-key-url-${index}`}
                         imagePath={data.frontUrl ?? ""}
                         title={data.name}
