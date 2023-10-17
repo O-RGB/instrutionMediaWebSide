@@ -36,7 +36,7 @@ const Exmple: React.FC<IExmple> = ({
         </div>
       </div>
       {/* <hr /> */}
-      <div className="flex w-full gh-full sm:gap-4 m-auto py-4 -mx-3 sm:-mx-0">
+      <div className="w-full h-full   m-auto pt-5  ">
         <OImgae
           url={imagePathList}
           imageClassName="imgPrint"

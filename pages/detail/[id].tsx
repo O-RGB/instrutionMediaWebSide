@@ -1,3 +1,4 @@
+"use client";
 import { GetServerSideProps, NextPage } from "next";
 import { createRef, useEffect, useState } from "react";
 import CardBackground from "../../components/CardBackground";
@@ -97,19 +98,17 @@ const Detail: NextPage = ({ get }: any) => {
               {ItemWork.content.map((e, i) => {
                 arrRef.push(createRef());
                 return (
-                  <>
-                    <React.Fragment key={`exam_g_${i}`}>
-                      <div ref={arrRef[i]}>
-                        <Exmple
-                          colorTheme={color}
-                          number={`${i + 1}`}
-                          content={e.name}
-                          contentDetail={`เริ่มตั้งแต่ หน้า ${e.pageStart} - ถึง ${e.pageEnd}`}
-                          imagePathList={e.url}
-                        ></Exmple>
-                      </div>
-                    </React.Fragment>
-                  </>
+                  <React.Fragment key={`exam_g_${i}`}>
+                    <div ref={arrRef[i]}>
+                      <Exmple
+                        colorTheme={color}
+                        number={`${i + 1}`}
+                        content={e.name}
+                        contentDetail={`เริ่มตั้งแต่ หน้า ${e.pageStart} - ถึง ${e.pageEnd}`}
+                        imagePathList={e.url}
+                      ></Exmple>
+                    </div>
+                  </React.Fragment>
                 );
               })}
             </>

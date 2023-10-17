@@ -18,6 +18,11 @@ import { SwiperSlide } from "swiper/react";
 import { getItemPreview } from "../api/fetch/fetcher/itemPreview";
 import Link from "next/link";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const Home: NextPage = () => {
   const getItemPreviewlist = async () => {
@@ -53,14 +58,19 @@ const Home: NextPage = () => {
       )}
       <Header></Header>
       <div className="bg-gray-100">
-        {/* <img src="imagetest.png" alt="" className=" w-full h-96 object-cover" /> */}
-
-        <SwiperCustom autoplay>
+        <SwiperCustom
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          autoplay
+          autoHeight
+          observer
+          observeParents
+        >
           {itemPreview?.map((data, index) => {
             if (data.frontUrl && data.color && data.detail && data.name) {
               return (
                 <SwiperSlide key={`header-in-${index}`}>
                   <HeaderPreview
+                    height="h-full sm:h-72"
                     imagePath={data.frontUrl ?? ""}
                     title={data.name}
                     titleDetail={data.detail}
@@ -76,6 +86,7 @@ const Home: NextPage = () => {
           {!itemPreview && (
             <>
               <HeaderPreview
+                height="h-full sm:h-72"
                 loadingMode
                 imagePath={""}
                 title={""}
@@ -87,7 +98,7 @@ const Home: NextPage = () => {
         </SwiperCustom>
         <Display>
           <CardBackground rounded="rounded-b-md" titleHerder="ใบงานแนะนำ">
-            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center items-center divide-y">
+            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center items-center ">
               {itemPreview?.map((data, index) => {
                 if (
                   data.frontUrl &&
@@ -98,6 +109,7 @@ const Home: NextPage = () => {
                 )
                   return (
                     <Link
+                      key={`item-book-k-${index}`}
                       onClick={() => {
                         setLoading(true);
                       }}

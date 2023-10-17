@@ -46,9 +46,7 @@ const OImgae: React.FC<OImgaeProps> = ({
     }, 0);
   };
 
-  useEffect(() => {
-    console.log("IMage");
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className={`relative overflow-hidden w-full h-full  ${relativeClass}`}>
@@ -78,9 +76,9 @@ const OImgae: React.FC<OImgaeProps> = ({
         {url && url != "" ? (
           <Image
             loading="lazy"
-            // unoptimized
+            unoptimized
             // onError={(e) => {
-            //   console.log(e)
+
             //   // setIsImageNotFound(true)
             // }}
             loader={() => url}
