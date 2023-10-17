@@ -1,9 +1,10 @@
-import { FaFilePdf, FaPrint } from "react-icons/fa";
+import { FaFilePdf, FaPrint, FaBook } from "react-icons/fa";
 
 interface IDetailHeader {
   children?: React.ReactNode;
   colorTheme?: string;
   print?: number;
+  book?: number;
   file?: number;
 }
 
@@ -11,6 +12,7 @@ const DetailHeader: React.FC<IDetailHeader> = ({
   children,
   colorTheme,
   print,
+  book,
   file,
 }) => {
   colorTheme = colorTheme ?? "bg-gray-500";
@@ -52,7 +54,7 @@ const DetailHeader: React.FC<IDetailHeader> = ({
         {print
           ? iconName(
               "ปริ้นไม่เข้าเล่ม",
-              "270 บาทรวมส่ง",
+              `${print}฿ ไม่รวมส่ง`,
               <FaPrint color="#FFFFFF" size={27} />,
               "bg-orange-400"
             )
@@ -62,11 +64,24 @@ const DetailHeader: React.FC<IDetailHeader> = ({
               <FaPrint color="#FFFFFF" size={27} />,
               "bg-gray-300"
             )}
+        {book
+          ? iconName(
+              "ปริ้นและเข้าเล่ม",
+              `${book}฿ ไม่รวมส่ง`,
+              <FaBook color="#FFFFFF" size={27} />,
+              "bg-blue-500"
+            )
+          : iconName(
+              "ไม่รับปริ้นและเข้าเล่ม",
+              "ไม่อนุญาตให้ปริ้นและเข้าเล่ม",
+              <FaBook color="#FFFFFF" size={27} />,
+              "bg-gray-300"
+            )}
 
         {file
           ? iconName(
               "ไฟล์ PDF",
-              "99 บาท",
+              "99฿ บาท",
               <FaFilePdf color="#FFFFFF" size={27} />,
               "bg-red-400"
             )

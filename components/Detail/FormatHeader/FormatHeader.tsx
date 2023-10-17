@@ -7,6 +7,7 @@ import {
   FaUnlock,
   FaTimes,
 } from "react-icons/fa";
+import { MdOutlineMenuBook } from "react-icons/md";
 
 interface IFormatHeader {
   children?: React.ReactNode;
@@ -60,7 +61,7 @@ const FormatHeader: React.FC<IFormatHeader> = ({
         {iconName(
           `${paperNumber} หน้า`,
           "รวมปกหน้าหลัง",
-          <FaBook color="#FFFFFF" size={27} />,
+          <MdOutlineMenuBook color="#FFFFFF" size={27} />,
           "bg-green-400"
         )}
 

@@ -47,6 +47,9 @@ const Detail: NextPage = ({ get }: any) => {
           title={ItemWork.name}
           titleDetail={ItemWork.detail}
           color={ItemWork.color}
+          book={ItemWork.price.book}
+          file={ItemWork.price.file}
+          print={ItemWork.price.print}
         ></HeaderPreview>
         <Display>
           <CardBackground rounded="rounded-b-md" titleHerder="รายละเอียด">
@@ -56,6 +59,7 @@ const Detail: NextPage = ({ get }: any) => {
             <DetailHeader
               file={ItemWork.price.file}
               print={ItemWork.price.print}
+              book={ItemWork.price.book}
               colorTheme={color}
             ></DetailHeader>
             <FormatHeader

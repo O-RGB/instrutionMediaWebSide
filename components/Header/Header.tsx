@@ -12,7 +12,7 @@ const Header: React.FC<IHeader> = ({}) => {
       <div className="h-14 w-full bg-white shadow-sm sticky top-0 z-50 ">
         <div className="flex m-auto w-ful h-full p-2 max-w-7xl px-3 sm:px-9 justify-between duration-300">
           <div
-            className="flex "
+            className="flex cursor-pointer"
             onClick={() => {
               Router.push("/");
             }}
