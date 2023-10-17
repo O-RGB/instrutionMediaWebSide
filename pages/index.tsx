@@ -23,6 +23,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import NextHead from "../components/NextHead";
 
 const Home: NextPage = () => {
   const getItemPreviewlist = async () => {
@@ -56,6 +57,14 @@ const Home: NextPage = () => {
           </div>
         </>
       )}
+      <NextHead
+        title={"Instrution Media Detail ดูตัวอย่างงาน"}
+        description={
+          "เว็บสำหรับดูตัวอย่างงาน รวบรวมทั้งงานขายและงานแจกฟรีไว้ที่นี่ทั้งหมด บอกรายละเอียดอย่างดี ทำสีสรรค์สวยงาม"
+        }
+        image={"/image.png"}
+        url={`https://instrutionmediadetail.vercel.app`}
+      ></NextHead>
       <Header></Header>
       <div className="bg-gray-100">
         <SwiperCustom

@@ -24,7 +24,11 @@ const DetailHeader: React.FC<IDetailHeader> = ({
     return (
       <>
         <div className="flex gap-2 px-2 p-2">
-          <div className={`flex  ${color ?? colorTheme} w-12 h-12 rounded-md`}>
+          <div
+            className={`flex  ${
+              color ? color : colorTheme
+            } w-12 h-12 rounded-md`}
+          >
             <div className="m-auto">{icon}</div>
           </div>
           <div className="flex">

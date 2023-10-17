@@ -20,7 +20,7 @@ const Exmple: React.FC<IExmple> = ({
   colorTheme = colorTheme ?? "bg-gray-500";
   return (
     <>
-      <div className="py-1 sticky top-14 -mx-3 sm:-mx-0 h-full bg-white border-b z-20">
+      <div className="py-1 sticky md:relative top-14 md:top-0 -mx-3 sm:-mx-0  bg-white border-b z-20">
         <div className="flex gap-2 py-1  ">
           <div className={`flex ${colorTheme} w-9 h-9  rounded-md mt-1`}>
             <div className="m-auto text-white text-1xl font-bold ">
@@ -36,11 +36,11 @@ const Exmple: React.FC<IExmple> = ({
         </div>
       </div>
       {/* <hr /> */}
-      <div className="w-full h-full   m-auto pt-5  ">
+      <div className="w-full       ">
         <OImgae
           url={imagePathList}
           imageClassName="imgPrint"
-          relativeClass="w-full h-full bg-black pointer-events-none"
+          relativeClass="w-full  bg-black pointer-events-none"
         ></OImgae>
       </div>
     </>

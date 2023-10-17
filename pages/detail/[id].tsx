@@ -94,24 +94,22 @@ const Detail: NextPage = ({ get }: any) => {
               </div>
             </div>
 
-            <>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {ItemWork.content.map((e, i) => {
                 arrRef.push(createRef());
                 return (
-                  <React.Fragment key={`exam_g_${i}`}>
-                    <div ref={arrRef[i]}>
-                      <Exmple
-                        colorTheme={color}
-                        number={`${i + 1}`}
-                        content={e.name}
-                        contentDetail={`เริ่มตั้งแต่ หน้า ${e.pageStart} - ถึง ${e.pageEnd}`}
-                        imagePathList={e.url}
-                      ></Exmple>
-                    </div>
-                  </React.Fragment>
+                  <div key={`exam_g_${i}`} ref={arrRef[i]}>
+                    <Exmple
+                      colorTheme={color}
+                      number={`${i + 1}`}
+                      content={e.name}
+                      contentDetail={`เริ่มตั้งแต่ หน้า ${e.pageStart} - ถึง ${e.pageEnd}`}
+                      imagePathList={e.url}
+                    ></Exmple>
+                  </div>
                 );
               })}
-            </>
+            </div>
 
             <div className="h-auto">
               <div className=""></div>
